@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Lyrics" representedClassName="Lyrics" syncable="YES" codeGenerationType="class">
+        <attribute name="copyright" optional="YES" attributeType="String"/>
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="lyricsBody" optional="YES" attributeType="String"/>
+        <attribute name="lyricsID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="lyrics" inverseEntity="Song"/>
+    </entity>
+    <entity name="Set" representedClassName="Set" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="performDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="sets" inverseEntity="Song"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
+        <attribute name="artist" optional="YES" attributeType="String"/>
+        <attribute name="markPlayed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="songID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="songTitle" optional="YES" attributeType="String"/>
+        <relationship name="lyrics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lyrics" inverseName="song" inverseEntity="Lyrics"/>
+        <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set" inverseName="songs" inverseEntity="Set"/>
+        <relationship name="songFiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SongFile" inverseName="song" inverseEntity="SongFile"/>
+    </entity>
+    <entity name="SongFile" representedClassName="SongFile" syncable="YES" codeGenerationType="class">
+        <attribute name="filePath" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="songFiles" inverseEntity="Song"/>
+    </entity>
+    <elements>
+        <element name="Lyrics" positionX="270.30078125" positionY="-86.09375" width="128" height="118"/>
+        <element name="Set" positionX="-162.3671875" positionY="-200.1171875" width="128" height="103"/>
+        <element name="Song" positionX="27.890625" positionY="-128.48046875" width="128" height="148"/>
+        <element name="SongFile" positionX="227.32421875" positionY="66.046875" width="128" height="103"/>
+    </elements>
+</model>
