@@ -17,10 +17,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="2dU-Kd-qvN"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="doc.text.viewfinder" catalog="system" id="OX4-5q-rf3">
+                        <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esn-ud-kwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="120" y="157"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="doc.text.viewfinder" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
