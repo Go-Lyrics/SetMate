@@ -16,9 +16,21 @@
 		B5560934235E530600F7D987 /* MusiXmatchApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560933235E530500F7D987 /* MusiXmatchApiKey.swift */; };
 		B556095B235E5CD800F7D987 /* Lyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556095A235E5CD700F7D987 /* Lyrics.swift */; };
 		B556095D235E5DA100F7D987 /* MusiXmatchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556095C235E5DA100F7D987 /* MusiXmatchClient.swift */; };
-		B556095F235E74DE00F7D987 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B556095E235E74DD00F7D987 /* Search.storyboard */; };
 		B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560960235E799600F7D987 /* SearchDetailVC.swift */; };
 		B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560962235E7A7600F7D987 /* SearchMasterVC.swift */; };
+		379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */; };
+		379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC595235E4FDD001EA87B /* CoreDataStack.swift */; };
+		379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC597235E50D2001EA87B /* Song+Convenience.swift */; };
+		379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC599235E7EEF001EA87B /* Set+Convenience.swift */; };
+		37AAA127235EC95C00D62DBA /* Lyrics+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */; };
+		37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA128235ECA7A00D62DBA /* SongFile.swift */; };
+		37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12A235ECC0F00D62DBA /* SetController.swift */; };
+		37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12C235EDC2B00D62DBA /* SongController.swift */; };
+		37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12E235EE1B300D62DBA /* FileController.swift */; };
+		B5560965235F713300F7D987 /* SetList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560964235F713300F7D987 /* SetList.storyboard */; };
+		B5560967235F714400F7D987 /* Song.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560966235F714400F7D987 /* Song.storyboard */; };
+		B5560969235F715700F7D987 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560968235F715700F7D987 /* Search.storyboard */; };
+		B556096B235F718100F7D987 /* Perform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B556096A235F718100F7D987 /* Perform.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +45,21 @@
 		B5560933235E530500F7D987 /* MusiXmatchApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusiXmatchApiKey.swift; sourceTree = "<group>"; };
 		B556095A235E5CD700F7D987 /* Lyrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyrics.swift; sourceTree = "<group>"; };
 		B556095C235E5DA100F7D987 /* MusiXmatchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiXmatchClient.swift; sourceTree = "<group>"; };
-		B556095E235E74DD00F7D987 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B5560960235E799600F7D987 /* SearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
 		B5560962235E7A7600F7D987 /* SearchMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterVC.swift; sourceTree = "<group>"; };
+		379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SetMate.xcdatamodel; sourceTree = "<group>"; };
+		379AC595235E4FDD001EA87B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		379AC597235E50D2001EA87B /* Song+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+Convenience.swift"; sourceTree = "<group>"; };
+		379AC599235E7EEF001EA87B /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
+		37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lyrics+Convenience.swift"; sourceTree = "<group>"; };
+		37AAA128235ECA7A00D62DBA /* SongFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFile.swift; sourceTree = "<group>"; };
+		37AAA12A235ECC0F00D62DBA /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
+		37AAA12C235EDC2B00D62DBA /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
+		37AAA12E235EE1B300D62DBA /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
+		B5560964235F713300F7D987 /* SetList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetList.storyboard; sourceTree = "<group>"; };
+		B5560966235F714400F7D987 /* Song.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Song.storyboard; sourceTree = "<group>"; };
+		B5560968235F715700F7D987 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		B556096A235F718100F7D987 /* Perform.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Perform.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				37553A05235E36290035671F /* Main.storyboard */,
-				B556095E235E74DD00F7D987 /* Search.storyboard */,
+				B5560964235F713300F7D987 /* SetList.storyboard */,
+				B5560966235F714400F7D987 /* Song.storyboard */,
+				B5560968235F715700F7D987 /* Search.storyboard */,
+				B556096A235F718100F7D987 /* Perform.storyboard */,
 				37553A0A235E362B0035671F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -114,6 +141,12 @@
 			children = (
 				B5560928235E51A200F7D987 /* Track.swift */,
 				B556095A235E5CD700F7D987 /* Lyrics.swift */,
+				379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */,
+				379AC595235E4FDD001EA87B /* CoreDataStack.swift */,
+				379AC597235E50D2001EA87B /* Song+Convenience.swift */,
+				379AC599235E7EEF001EA87B /* Set+Convenience.swift */,
+				37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */,
+				37AAA128235ECA7A00D62DBA /* SongFile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +154,9 @@
 		37553A17235E37260035671F /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				37AAA12A235ECC0F00D62DBA /* SetController.swift */,
+				37AAA12C235EDC2B00D62DBA /* SongController.swift */,
+				37AAA12E235EE1B300D62DBA /* FileController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -208,8 +244,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37553A0C235E362B0035671F /* LaunchScreen.storyboard in Resources */,
-				B556095F235E74DE00F7D987 /* Search.storyboard in Resources */,
+				B5560965235F713300F7D987 /* SetList.storyboard in Resources */,
 				37553A09235E362B0035671F /* Assets.xcassets in Resources */,
+				B5560967235F714400F7D987 /* Song.storyboard in Resources */,
+				B5560969235F715700F7D987 /* Search.storyboard in Resources */,
+				B556096B235F718100F7D987 /* Perform.storyboard in Resources */,
 				37553A07235E36290035671F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,14 +260,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */,
+				37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */,
+				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
 				B556095D235E5DA100F7D987 /* MusiXmatchClient.swift in Sources */,
 				B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */,
 				B556095B235E5CD800F7D987 /* Lyrics.swift in Sources */,
+				379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */,
+				37AAA127235EC95C00D62DBA /* Lyrics+Convenience.swift in Sources */,
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
 				B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */,
 				B5560929235E51A300F7D987 /* Track.swift in Sources */,
 				B5560934235E530600F7D987 /* MusiXmatchApiKey.swift in Sources */,
+				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
+				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
+				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
+				379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +474,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */,
+			);
+			currentVersion = 379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */;
+			path = SetMate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 375539F4235E36290035671F /* Project object */;
 }
