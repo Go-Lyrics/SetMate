@@ -68,11 +68,11 @@
             </objects>
             <point key="canvasLocation" x="412" y="-445"/>
         </scene>
-        <!--Item-->
+        <!--Split View Controller-->
         <scene sceneID="LRo-j9-Uqb">
             <objects>
                 <splitViewController id="diG-fR-GHf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="list.bullet.below.rectangle" catalog="system" id="Vvq-Ud-OvR">
+                    <tabBarItem key="tabBarItem" title="" image="list.bullet.below.rectangle" catalog="system" id="Vvq-Ud-OvR">
                         <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
