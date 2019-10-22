@@ -3,6 +3,150 @@
     <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="OGI-8E-oQK">
+            <objects>
+                <tabBarController id="vwY-0p-58P" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FMA-hZ-IK5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GbE-YE-I7J" kind="relationship" relationship="viewControllers" id="1xS-lV-kxB"/>
+                        <segue destination="Pf8-6L-v6f" kind="relationship" relationship="viewControllers" id="Y1i-pq-Yrq"/>
+                        <segue destination="3hC-Ot-FlN" kind="relationship" relationship="viewControllers" id="cwR-7R-WdW"/>
+                        <segue destination="xSt-Sj-8F0" kind="relationship" relationship="viewControllers" id="ZGp-dt-T9q"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8w-Vi-gZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="1477"/>
+        </scene>
+        <!--SetList-->
+        <scene sceneID="xpU-JF-BR9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SetList" id="o1L-tb-Jjj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TZy-jw-vlW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3HW-S9-O7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1516.906474820144" y="-315.0753768844221"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EXl-xF-7wv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GbE-YE-I7J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" selectedImage="list.bullet.below.rectangle" catalog="system" id="NZh-hO-K34"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vmR-LR-HLl">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o1L-tb-Jjj" kind="relationship" relationship="rootViewController" id="N8g-ZF-ySO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DTW-vW-plI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762.58992805755406" y="-315.0753768844221"/>
+        </scene>
+        <!--Song-->
+        <scene sceneID="sIT-kL-6sa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Song" id="bF2-LE-ZRB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Srb-5B-66c"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnS-xd-6yK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="440"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mrm-Ua-skQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pf8-6L-v6f" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" selectedImage="music.note.list" catalog="system" id="0T0-b3-wQ4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gxG-To-K28">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bF2-LE-ZRB" kind="relationship" relationship="rootViewController" id="6jh-Xk-CnE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZBa-vN-sdT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763" y="440"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="ynC-qa-P9B">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="ERF-a2-dTP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UwI-R5-0MO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQa-ua-iDB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="1184"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MQa-wD-nyI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3hC-Ot-FlN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" selectedImage="magnifyingglass" catalog="system" id="gRa-qq-baH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C48-gA-SQk">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ERF-a2-dTP" kind="relationship" relationship="rootViewController" id="Btm-le-ctm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSW-r3-LqQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763" y="1184"/>
+        </scene>
+        <!--Perform-->
+        <scene sceneID="X9P-tX-2TG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Perform" id="H4K-sI-i4o" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2BL-8A-Bvo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fCB-XB-MgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="1928"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Uqq-nt-Tc4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xSt-Sj-8F0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" selectedImage="airplayvideo" catalog="system" id="225-c4-EDn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R5U-Dg-qDw">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H4K-sI-i4o" kind="relationship" relationship="rootViewController" id="5E4-nr-1ts"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ye8-bF-L98" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763" y="1928"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="airplayvideo" catalog="system" width="64" height="48"/>
+        <image name="list.bullet.below.rectangle" catalog="system" width="64" height="56"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="music.note.list" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
