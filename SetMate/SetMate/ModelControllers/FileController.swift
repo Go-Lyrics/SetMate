@@ -11,5 +11,13 @@ import Foundation
 class FileController {
 
 	let fm = FileManager.default
-	
+
+//	let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
+//
+//	let fileLocation = documentsDir
+//		.appendingPathComponent("songs")
+//		.appendingPathComponent("\(song.identifier)")
+//		.appendingPathComponent("myVideo.mp4")
+//
+//	print(fileLocation)
 }
