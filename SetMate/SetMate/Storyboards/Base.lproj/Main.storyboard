@@ -14,6 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="GbE-YE-I7J" kind="relationship" relationship="viewControllers" id="1xS-lV-kxB"/>
@@ -40,7 +41,7 @@
         <scene sceneID="EXl-xF-7wv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GbE-YE-I7J" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="list.bullet.below.rectangle" catalog="system" id="NZh-hO-K34"/>
+                    <tabBarItem key="tabBarItem" title="" image="list.bullet.below.rectangle" catalog="system" selectedImage="list.bullet.below.rectangle" id="NZh-hO-K34"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vmR-LR-HLl">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
@@ -69,7 +70,7 @@
         <scene sceneID="mrm-Ua-skQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pf8-6L-v6f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="music.note.list" catalog="system" id="0T0-b3-wQ4"/>
+                    <tabBarItem key="tabBarItem" title="" image="music.note.list" catalog="system" selectedImage="music.note.list" id="0T0-b3-wQ4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gxG-To-K28">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
@@ -98,7 +99,7 @@
         <scene sceneID="MQa-wD-nyI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3hC-Ot-FlN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="magnifyingglass" catalog="system" id="gRa-qq-baH"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="gRa-qq-baH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C48-gA-SQk">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
@@ -127,7 +128,7 @@
         <scene sceneID="Uqq-nt-Tc4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xSt-Sj-8F0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="airplayvideo" catalog="system" id="225-c4-EDn"/>
+                    <tabBarItem key="tabBarItem" title="" image="doc.text.viewfinder" catalog="system" selectedImage="doc.text.viewfinder" id="225-c4-EDn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R5U-Dg-qDw">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
@@ -144,9 +145,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="airplayvideo" catalog="system" width="64" height="48"/>
+        <image name="doc.text.viewfinder" catalog="system" width="64" height="56"/>
         <image name="list.bullet.below.rectangle" catalog="system" width="64" height="56"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="music.note.list" catalog="system" width="64" height="56"/>
     </resources>
+    <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
