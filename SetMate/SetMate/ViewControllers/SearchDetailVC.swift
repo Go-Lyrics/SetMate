@@ -12,6 +12,7 @@ class SearchDetailVC: UIViewController {
 
 	// MARK: - IBOutlets
 	
+	@IBOutlet weak var lyricsTextView: UITextView!
 	
 	// MARK: - Properties
 	
