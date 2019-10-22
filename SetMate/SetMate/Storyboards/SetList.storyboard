@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Set List Name-->
         <scene sceneID="tCN-JM-TBd">
             <objects>
                 <viewController id="QYi-wN-bvQ" sceneMemberID="viewController">
@@ -17,12 +17,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="VeQ-NQ-Ip7"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Set List Name" id="ttY-ol-MRt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wu2-7F-oOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412" y="191"/>
+            <point key="canvasLocation" x="1165.4676258992806" y="190.95477386934672"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Set Lists-->
         <scene sceneID="BzQ-Ni-zxI">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ZsW-rL-Bot" sceneMemberID="viewController">
@@ -45,7 +46,7 @@
                             <outlet property="delegate" destination="ZsW-rL-Bot" id="gD6-GO-mfV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="RuJ-WQ-ea4"/>
+                    <navigationItem key="navigationItem" title="Set Lists" id="RuJ-WQ-ea4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qp-z8-iGc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,14 +72,39 @@
         <scene sceneID="LRo-j9-Uqb">
             <objects>
                 <splitViewController id="diG-fR-GHf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="list.bullet.below.rectangle" catalog="system" id="Vvq-Ud-OvR">
+                        <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="w97-xL-fKS" kind="relationship" relationship="masterViewController" id="d1d-Cr-4rT"/>
-                        <segue destination="QYi-wN-bvQ" kind="relationship" relationship="detailViewController" id="zHS-MI-C5T"/>
+                        <segue destination="p3C-Ib-VvN" kind="relationship" relationship="detailViewController" id="zHS-MI-C5T"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keG-KE-ggQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-346" y="-127"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cgR-vx-9S8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p3C-Ib-VvN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HaA-1T-6Rd">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QYi-wN-bvQ" kind="relationship" relationship="rootViewController" id="dlL-wy-RXe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8j-gw-EnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="411.51079136690652" y="190.95477386934672"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="list.bullet.below.rectangle" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
