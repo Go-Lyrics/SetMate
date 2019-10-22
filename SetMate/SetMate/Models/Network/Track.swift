@@ -8,29 +8,13 @@
 
 import Foundation
 
-struct Chart: Decodable {
-	let trackList: [Track]
-	
-	enum CodingKeys: String, CodingKey {
-		case message, body, trackList
-	}
-	
-	init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: CodingKeys.self)
-		let messageContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .message)
-		let bodyContainer = try messageContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .body)
-		
-		trackList = try bodyContainer.decode([Track].self, forKey: .trackList)
-	}
-}
-
 struct Track: Decodable {
 	let id: Int
 	let name: String
 	let isExplicit: Bool
 	let favoritedCount: Int
 	let artistName: String
-	let lyrics: Lyrics?
+	let lyrics: SongLyrics?
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "trackId"
