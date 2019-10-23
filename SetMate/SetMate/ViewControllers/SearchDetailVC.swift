@@ -16,13 +16,12 @@ class SearchDetailVC: UIViewController {
 	
 	// MARK: - Properties
 	
-	private let searchClient = MusiXmatchClient()
-	private var lyrics: SongLyrics?
-	var song: Track? {
-		didSet {
-			getLyrics()
-		}
-	}
+//	private var lyrics: SongLyrics?
+//	var song: Track? {
+//		didSet {
+//			getLyrics()
+//		}
+//	}
 	
 	
 	// MARK: - Life Cycle
@@ -34,31 +33,17 @@ class SearchDetailVC: UIViewController {
 	// MARK: - Helpers
 	
 	private func getLyrics() {
-		guard let song = song else { return }
-		
-		searchClient.fetchLyrics(for: song.id) { (result) in
-			DispatchQueue.main.async {
-				switch result {
-				case .success(let lyrics):
-					self.lyrics = lyrics
-				case .failure(let error):
-					self.lyrics = nil
-					print("Error: \(error)")
-				}
-				
-				self.updateViews()
-			}
-		}
+//		guard let song = song else { return }
 	}
 	
 	private func updateViews() {
 		loadViewIfNeeded()
-		lyricsTextView.text = lyrics?.body
+//		lyricsTextView.text = lyrics?.body
 	}
 }
 
 extension SearchDetailVC: SearchMasterVCDelegate {
-	func songSelected(_ newSong: Track) {
-		song = newSong
+	func songSelected() {
+//		song = newSong
 	}
 }
