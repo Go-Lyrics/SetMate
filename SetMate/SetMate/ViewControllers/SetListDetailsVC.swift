@@ -13,12 +13,17 @@ class SetListDetailsVC: CollapsableVC {
 	// MARK: - IBOutlets
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var manageSetListButton: UIBarButtonItem!
 	
 	// MARK: - Properties
 	
 	private var set: Set? {
 		didSet {
-			
+			if isViewLoaded {
+				title = set?.name
+				manageSetListButton.isEnabled = true
+				tableView.reloadData()
+			}
 		}
 	}
 	
@@ -27,13 +32,26 @@ class SetListDetailsVC: CollapsableVC {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		tableView.dataSource = self
+		manageSetListButton.isEnabled = false
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		tableView.reloadData()
+	}
+	
+	// MARK: - Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let navController = segue.destination as? UINavigationController, let manageSetListVC = navController.topViewController as? ManageSetListVC {
+			manageSetListVC.set = set
+		}
 	}
 	
 	// MARK: - IBActions
 	
-	@IBAction func addSongButtonTapped(_ sender: Any) {
-		
-	}
 	
 	// MARK: - Helpers
 	

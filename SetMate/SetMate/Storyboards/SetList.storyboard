@@ -58,12 +58,12 @@
                     <navigationItem key="navigationItem" title="Set List Name" id="ZQT-j9-zvc">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Gum-0Q-fXO">
                             <connections>
-                                <action selector="addSongButtonTapped:" destination="QYi-wN-bvQ" id="wVq-MM-Y7K"/>
                                 <segue destination="a8y-dY-GFf" kind="presentation" id="1CX-um-7d1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="manageSetListButton" destination="Gum-0Q-fXO" id="LyX-nS-4bi"/>
                         <outlet property="tableView" destination="Whh-NO-CwW" id="ZnC-Vg-ZrD"/>
                     </connections>
                 </viewController>
@@ -76,7 +76,7 @@
             <objects>
                 <viewController id="9VJ-y5-qtF" customClass="ManageSetListVC" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QmL-A2-eCO">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="1006.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="1007"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltF-yz-wvs">
@@ -163,13 +163,21 @@
                         <viewLayoutGuide key="safeArea" id="Wx2-ln-LvJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Songs" id="LAu-vs-eJC">
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="Ra9-RH-VWE"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ra9-RH-VWE">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="9VJ-y5-qtF" id="Apz-bH-cqe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Order List" id="JKi-ai-Hrt">
                             <connections>
                                 <segue destination="qYf-PD-bPt" kind="show" id="1RH-0M-9sa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="draftTableView" destination="CVM-PO-muG" id="hLu-VY-gpg"/>
+                        <outlet property="libraryTableView" destination="dOR-Lu-VDW" id="HfX-yx-g7j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWy-Nl-t78" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,7 +294,7 @@
             <objects>
                 <viewController id="qYf-PD-bPt" customClass="OrderSetListVC" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6nO-1r-BLL">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="1006.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="1007"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Do-2T-k5Z">
@@ -324,7 +332,21 @@
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJu-z5-9uG">
                                         <rect key="frame" x="285" y="0.0" width="142" height="950.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyv-la-j5J">
+                                                <rect key="frame" x="46.5" y="457.5" width="49" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                <state key="normal" title="Copy"/>
+                                                <connections>
+                                                    <action selector="transferSongsButtonTapped:" destination="qYf-PD-bPt" eventType="touchUpInside" id="N2p-Tf-DMw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="zyv-la-j5J" firstAttribute="centerX" secondItem="eJu-z5-9uG" secondAttribute="centerX" id="Pne-6g-D3S"/>
+                                            <constraint firstItem="zyv-la-j5J" firstAttribute="centerY" secondItem="eJu-z5-9uG" secondAttribute="centerY" id="kI7-vW-5On"/>
+                                        </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="72r-e9-7RG">
                                         <rect key="frame" x="427" y="0.0" width="285" height="950.5"/>
@@ -373,8 +395,17 @@
                         <viewLayoutGuide key="safeArea" id="bVh-xN-3lT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Order List" id="QQw-PD-Q8S">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="J6b-q6-3hL"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="J6b-q6-3hL">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="qYf-PD-bPt" id="MVU-Fv-9fx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="draftTableView" destination="APb-Wg-mih" id="AFG-4u-a2C"/>
+                        <outlet property="orderedTableView" destination="72r-e9-7RG" id="TJN-gL-Csp"/>
+                        <outlet property="transferSongsButton" destination="zyv-la-j5J" id="16L-cp-AmH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzM-0I-TiX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

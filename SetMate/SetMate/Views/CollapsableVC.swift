@@ -45,7 +45,7 @@ class CollapsableVC: UIViewController {
 		}
 	}
 	
-	#warning("Edge swip may be buggy")
+	#warning("Edge swipe may be buggy")
 	private func leftEdgeSwipe() {
 		let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(showPrimaryVC))
 		edgePan.edges = .left
