@@ -15,14 +15,12 @@ extension Song {
 										artist: String,
 										songID: UUID = UUID(),
 										markPlayed: Bool,
-										lyrics: Lyrics?,
 										files: [SongFile]?,
 										context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
 		self.songTitle = songTitle
 		self.songID = songID
 		self.markPlayed = markPlayed
-		self.lyrics = lyrics
 		if let files = files {
 			self.songFiles = NSSet(array: files)
 		}

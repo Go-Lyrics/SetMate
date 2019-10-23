@@ -19,7 +19,6 @@
 		379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC595235E4FDD001EA87B /* CoreDataStack.swift */; };
 		379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC597235E50D2001EA87B /* Song+Convenience.swift */; };
 		379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC599235E7EEF001EA87B /* Set+Convenience.swift */; };
-		37AAA127235EC95C00D62DBA /* Lyrics+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */; };
 		37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA128235ECA7A00D62DBA /* SongFile.swift */; };
 		37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12A235ECC0F00D62DBA /* SetController.swift */; };
 		37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12C235EDC2B00D62DBA /* SongController.swift */; };
@@ -45,7 +44,6 @@
 		379AC595235E4FDD001EA87B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		379AC597235E50D2001EA87B /* Song+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+Convenience.swift"; sourceTree = "<group>"; };
 		379AC599235E7EEF001EA87B /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
-		37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lyrics+Convenience.swift"; sourceTree = "<group>"; };
 		37AAA128235ECA7A00D62DBA /* SongFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFile.swift; sourceTree = "<group>"; };
 		37AAA12A235ECC0F00D62DBA /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		37AAA12C235EDC2B00D62DBA /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				379AC595235E4FDD001EA87B /* CoreDataStack.swift */,
 				379AC597235E50D2001EA87B /* Song+Convenience.swift */,
 				379AC599235E7EEF001EA87B /* Set+Convenience.swift */,
-				37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */,
 				37AAA128235ECA7A00D62DBA /* SongFile.swift */,
 			);
 			path = Models;
@@ -256,7 +253,6 @@
 				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
 				379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */,
-				37AAA127235EC95C00D62DBA /* Lyrics+Convenience.swift in Sources */,
 				379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */,
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
