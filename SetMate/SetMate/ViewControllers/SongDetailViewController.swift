@@ -116,7 +116,7 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 	}
 }
 
-extension SongDetailViewController: SetSelectionDelegate {
+extension SongDetailViewController: SongSelectionDelegate {
     func setSelected(_ selection: Song) {
 		song = selection
     }

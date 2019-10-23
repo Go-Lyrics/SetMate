@@ -50,8 +50,6 @@ class NewSongViewController: UIViewController {
 	}
 
 
-
-
 	@IBAction func documentPickerPresenter(_ sender: UIButton) {
 		let pdfType = kUTTypePDF as String
 		let jpegType = kUTTypeJPEG as String

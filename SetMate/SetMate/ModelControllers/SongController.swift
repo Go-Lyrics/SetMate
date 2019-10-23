@@ -11,8 +11,6 @@ import CoreData
 
 class SongController {
 
-	
-
 	// MARK: - CRUD Functions
 
 	func createSong(songTitle: String, artist: String, notes: String?, markPlayed: Bool = false, files: [SongFile]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

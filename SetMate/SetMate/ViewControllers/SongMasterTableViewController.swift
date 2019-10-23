@@ -9,14 +9,14 @@
 import UIKit
 import CoreData
 
-protocol SetSelectionDelegate: class {
+protocol SongSelectionDelegate: class {
     func setSelected(_ selection: Song)
 }
 
 class SongMasterTableViewController: UITableViewController {
 
 	let songController = SongController()
-	private weak var delegate: SetSelectionDelegate?
+	private weak var delegate: SongSelectionDelegate?
 
 	fileprivate var collapseDetailViewController = true
 
@@ -38,13 +38,19 @@ class SongMasterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
-		splitViewController?.delegate = self
+		prepareDelegate()
     }
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 	}
+
+	private func prepareDelegate() {
+        let splitViewController = self.splitViewController
+        let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
+        delegate = detailsVC
+    }
 
 	
 
@@ -110,19 +116,7 @@ class SongMasterTableViewController: UITableViewController {
 		guard let indexPath = tableView.indexPathForSelectedRow else { return }
 		let song = fetchResultsController.object(at: indexPath)
 		detailVC.song = song
-
-//		guard let navController = segue.destination as? UINavigationController,
-//			let viewController = navController.topViewController as? SongDetailViewController
-//			else {
-//				fatalError("Expected SongDetailViewController")
-//		}
-//
-//		collapseDetailViewController = false
-//
-//		viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//		viewController.navigationItem.leftItemsSupplementBackButton = true
     }
-
 }
 
 extension SongMasterTableViewController: NSFetchedResultsControllerDelegate {
@@ -165,13 +159,5 @@ extension SongMasterTableViewController: NSFetchedResultsControllerDelegate {
 		default:
 			fatalError()
 		}
-	}
-}
-
-extension SongMasterTableViewController: UISplitViewControllerDelegate {
-
-	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-
-		return collapseDetailViewController
 	}
 }
