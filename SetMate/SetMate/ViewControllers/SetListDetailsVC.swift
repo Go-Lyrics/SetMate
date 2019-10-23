@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetListDetailsVC: UIViewController {
+class SetListDetailsVC: CollapsableVC {
 	
 	// MARK: - IBOutlets
 	
@@ -16,7 +16,6 @@ class SetListDetailsVC: UIViewController {
 	
 	// MARK: - Properties
 	
-	private var showMaster = false
 	private var set: Set? {
 		didSet {
 			
@@ -28,26 +27,12 @@ class SetListDetailsVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
 	}
 	
 	// MARK: - IBActions
 	
 	@IBAction func addSongButtonTapped(_ sender: Any) {
 		
-	}
-	
-	@IBAction func showMasterVCButtonTapped(_ sender: Any) {
-		showMaster.toggle()
-		if showMaster {
-			UIView.animate(withDuration: 0.3) {
-				self.splitViewController?.preferredDisplayMode = .allVisible
-			}
-		} else {
-			UIView.animate(withDuration: 0.3) {
-				self.splitViewController?.preferredDisplayMode = .primaryHidden
-			}
-		}
 	}
 	
 	// MARK: - Helpers
