@@ -13,14 +13,15 @@ import CoreData
 extension Song {
 	@discardableResult convenience init(songTitle: String,
 										artist: String,
-										songID: UUID = UUID(),
+										notes: String?,
 										markPlayed: Bool,
 										files: [SongFile]?,
 										context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
-		self.songTitle = songTitle
 		self.artist = artist
-		self.songID = songID
+		self.notes = notes
+		self.songTitle = songTitle
+		self.songID = UUID()
 		self.markPlayed = markPlayed
 		if let files = files {
 			self.songFiles = NSSet(array: files)

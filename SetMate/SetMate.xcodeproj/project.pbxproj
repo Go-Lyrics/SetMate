@@ -15,6 +15,7 @@
 		379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7866235FA40D0070C224 /* SongDetailViewController.swift */; };
 		379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7868235FCF040070C224 /* SongMasterTableViewController.swift */; };
 		379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */; };
+		379A786F23600A5E0070C224 /* NewSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A786E23600A5E0070C224 /* NewSongViewController.swift */; };
 		379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */; };
 		379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC595235E4FDD001EA87B /* CoreDataStack.swift */; };
 		379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC597235E50D2001EA87B /* Song+Convenience.swift */; };
@@ -47,6 +48,7 @@
 		379A7866235FA40D0070C224 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		379A7868235FCF040070C224 /* SongMasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongMasterTableViewController.swift; sourceTree = "<group>"; };
 		379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFileCollectionViewCell.swift; sourceTree = "<group>"; };
+		379A786E23600A5E0070C224 /* NewSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongViewController.swift; sourceTree = "<group>"; };
 		379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SetMate.xcdatamodel; sourceTree = "<group>"; };
 		379AC595235E4FDD001EA87B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		379AC597235E50D2001EA87B /* Song+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+Convenience.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		37553A1A235E375C0035671F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
 				379A7866235FA40D0070C224 /* SongDetailViewController.swift */,
 				B5560962235E7A7600F7D987 /* SearchMasterVC.swift */,
 				B5560960235E799600F7D987 /* SearchDetailVC.swift */,
@@ -190,6 +193,7 @@
 				B50880F7235FF78100926BBE /* ManageSetListVC.swift */,
 				B50880F9235FF7D700926BBE /* OrderSetListVC.swift */,
 				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
+				379A786E23600A5E0070C224 /* NewSongViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,6 +287,7 @@
 				B50880F8235FF78100926BBE /* ManageSetListVC.swift in Sources */,
 				B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */,
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
+				379A786F23600A5E0070C224 /* NewSongViewController.swift in Sources */,
 				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
 				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,
 				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import PDFKit
 
 protocol SongDetailViewControllerDelegate {
 
@@ -19,8 +20,10 @@ protocol SongDetailViewControllerDelegate {
 class SongDetailViewController: UIViewController {
 
 	@IBOutlet weak var filesCollectionView: UICollectionView!
-
+	@IBOutlet weak var pdfContainerView: UIView!
+	
 	var delegate: SongDetailViewControllerDelegate?
+	let pdfView = PDFView()
 	var songFiles: [SongFile] = [] {
 		didSet {
 
@@ -41,12 +44,12 @@ class SongDetailViewController: UIViewController {
     }
 
 	private func updateViews() {
+		loadViewIfNeeded()
 		guard let song = song else { return }
 		if let songTitle = song.songTitle {
 			title = "Song Title: \(songTitle)"
 		}
 	}
-
 
 	@IBAction func fileButtonPresentDocumentPicker(_ sender: UIBarButtonItem) {
 		let pdfType = kUTTypePDF as String
@@ -61,6 +64,15 @@ class SongDetailViewController: UIViewController {
 	}
 
 
+	private func loadPDFView() {
+		pdfView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(pdfView)
+
+		pdfView.leadingAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.leadingAnchor).isActive = true
+		pdfView.trailingAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+		pdfView.topAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.topAnchor).isActive = true
+		pdfView.bottomAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.bottomAnchor).isActive = true
+	}
 
 
     /*
@@ -78,9 +90,9 @@ class SongDetailViewController: UIViewController {
 
 extension SongDetailViewController: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-		for url in urls {
-
-		}
+//		for url in urls {
+//
+//		}
 	}
 }
 
@@ -102,6 +114,10 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 		return cell
 
 	}
+}
 
-
+extension SongDetailViewController: SongSelectionDelegate {
+    func setSelected(_ selection: Song) {
+		song = selection
+    }
 }
