@@ -49,6 +49,7 @@ class SongMasterTableViewController: UITableViewController {
 	private func prepareDelegate() {
         let splitViewController = self.splitViewController
         let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
+		detailsVC?.songController = songController
         delegate = detailsVC
     }
 
