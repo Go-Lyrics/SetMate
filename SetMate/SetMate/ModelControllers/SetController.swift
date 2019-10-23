@@ -24,7 +24,7 @@ class SetController {
 		set.name = name
 		set.lastModified = Date()
 		if let songs = songs {
-			set.songs = NSSet(array: songs)
+			set.songs = NSOrderedSet(array: songs)
 		}
 		saveToPersistentStore()
 	}
