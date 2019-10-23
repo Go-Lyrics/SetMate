@@ -13,11 +13,12 @@
 		37553A09235E362B0035671F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37553A08235E362B0035671F /* Assets.xcassets */; };
 		37553A0C235E362B0035671F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37553A0A235E362B0035671F /* LaunchScreen.storyboard */; };
 		379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7866235FA40D0070C224 /* SongDetailViewController.swift */; };
+		379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7868235FCF040070C224 /* SongMasterTableViewController.swift */; };
+		379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */; };
 		379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */; };
 		379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC595235E4FDD001EA87B /* CoreDataStack.swift */; };
 		379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC597235E50D2001EA87B /* Song+Convenience.swift */; };
 		379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC599235E7EEF001EA87B /* Set+Convenience.swift */; };
-		37AAA127235EC95C00D62DBA /* Lyrics+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */; };
 		37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA128235ECA7A00D62DBA /* SongFile.swift */; };
 		37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12A235ECC0F00D62DBA /* SetController.swift */; };
 		37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12C235EDC2B00D62DBA /* SongController.swift */; };
@@ -44,11 +45,12 @@
 		37553A0B235E362B0035671F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37553A0D235E362B0035671F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		379A7866235FA40D0070C224 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
+		379A7868235FCF040070C224 /* SongMasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongMasterTableViewController.swift; sourceTree = "<group>"; };
+		379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFileCollectionViewCell.swift; sourceTree = "<group>"; };
 		379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SetMate.xcdatamodel; sourceTree = "<group>"; };
 		379AC595235E4FDD001EA87B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		379AC597235E50D2001EA87B /* Song+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+Convenience.swift"; sourceTree = "<group>"; };
 		379AC599235E7EEF001EA87B /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
-		37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lyrics+Convenience.swift"; sourceTree = "<group>"; };
 		37AAA128235ECA7A00D62DBA /* SongFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFile.swift; sourceTree = "<group>"; };
 		37AAA12A235ECC0F00D62DBA /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		37AAA12C235EDC2B00D62DBA /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 				379AC595235E4FDD001EA87B /* CoreDataStack.swift */,
 				379AC597235E50D2001EA87B /* Song+Convenience.swift */,
 				379AC599235E7EEF001EA87B /* Set+Convenience.swift */,
-				37AAA126235EC95C00D62DBA /* Lyrics+Convenience.swift */,
 				37AAA128235ECA7A00D62DBA /* SongFile.swift */,
 			);
 			path = Models;
@@ -173,6 +174,7 @@
 		37553A19235E37410035671F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +189,7 @@
 				B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */,
 				B50880F7235FF78100926BBE /* ManageSetListVC.swift */,
 				B50880F9235FF7D700926BBE /* OrderSetListVC.swift */,
+				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,7 +277,6 @@
 				B50880FA235FF7D700926BBE /* OrderSetListVC.swift in Sources */,
 				B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */,
 				379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */,
-				37AAA127235EC95C00D62DBA /* Lyrics+Convenience.swift in Sources */,
 				379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */,
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
 				B50880F8235FF78100926BBE /* ManageSetListVC.swift in Sources */,
@@ -283,6 +285,8 @@
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
 				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
 				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,
+				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
+				379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */,
 				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
 				379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */,
 			);

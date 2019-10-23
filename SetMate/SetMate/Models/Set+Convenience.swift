@@ -18,5 +18,6 @@ extension Set {
 		if let songs = songs {
 			self.songs = NSSet(array: songs)
 		}
+		self.lastModified = Date()
 	}
 }

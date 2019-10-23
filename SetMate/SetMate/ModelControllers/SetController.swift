@@ -18,13 +18,11 @@ class SetController {
 		saveToPersistentStore()
 	}
 	
-	// MARK: - Read
-	
-	
 	// MARK: - Update
 
 	func updateSet(set: Set, name: String, songs: [Song]?) {
 		set.name = name
+		set.lastModified = Date()
 		if let songs = songs {
 			set.songs = NSSet(array: songs)
 		}
