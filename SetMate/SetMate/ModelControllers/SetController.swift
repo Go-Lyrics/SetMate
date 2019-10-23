@@ -11,14 +11,15 @@ import CoreData
 
 class SetController {
 
-	func createSet(name: String, performDate: Date? = Date(), id: UUID = UUID(), songs: [Song]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-		Set(name: name, performDate: performDate, id: id, songs: songs, context: context)
+	func createSet(name: String, lastModified: Date = Date(), performDate: Date? = Date(), id: UUID = UUID(), songs: [Song]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+		Set(name: name, performDate: performDate, id: id, songs: songs, lastModified: lastModified, context: context)
 		saveToPersistentStore()
 	}
 
-	func updateSet(set: Set, name: String, songs: [Song]?, performDate: Date? = Date()) {
+	func updateSet(set: Set, name: String, songs: [Song]?, lastModified: Date = Date(), performDate: Date? = Date()) {
 		set.name = name
 		set.performDate = performDate
+		set.lastModified = lastModified
 		if let songs = songs {
 			set.songs = NSSet(array: songs)
 		}

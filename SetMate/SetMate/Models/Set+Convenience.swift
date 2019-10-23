@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Set {
-	@discardableResult convenience init(name: String, performDate: Date?, id: UUID = UUID(), songs: [Song]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+	@discardableResult convenience init(name: String, performDate: Date?, id: UUID = UUID(), songs: [Song]?, lastModified: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
 		self.name = name
 		self.performDate = performDate
@@ -18,5 +18,6 @@ extension Set {
 		if let songs = songs {
 			self.songs = NSSet(array: songs)
 		}
+		self.lastModified = lastModified
 	}
 }

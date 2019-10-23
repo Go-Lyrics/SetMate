@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,76 @@
                     <view key="view" contentMode="scaleToFill" id="JfL-UZ-3Bo">
                         <rect key="frame" x="0.0" y="0.0" width="818.5" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g51-SE-0ye">
+                                <rect key="frame" x="0.0" y="708" width="818.5" height="61"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="eFA-aj-QAP"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QZG-8V-3Sk">
+                                    <size key="itemSize" width="200" height="30"/>
+                                    <size key="estimatedItemSize" width="150" height="30"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="8" maxX="0.0" maxY="8"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FileCell" id="uM9-9q-AMb" customClass="SongFileCollectionViewCell" customModule="SetMate" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="15.5" width="103.5" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b5h-7H-4Ty">
+                                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCh-gf-bUp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="30"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bUw-P9-WgQ">
+                                                            <rect key="frame" x="8" y="5" width="87.5" height="20"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="doc.append" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rLy-ge-zLR">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="20"/>
+                                                                    <color key="tintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filename" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-GF-jGq">
+                                                                    <rect key="frame" x="26" y="0.0" width="61.5" height="20"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="bUw-P9-WgQ" secondAttribute="trailing" id="BJz-XY-tez"/>
+                                                        <constraint firstItem="bUw-P9-WgQ" firstAttribute="centerY" secondItem="hCh-gf-bUp" secondAttribute="centerY" id="ana-SN-nZE"/>
+                                                        <constraint firstItem="bUw-P9-WgQ" firstAttribute="leading" secondItem="hCh-gf-bUp" secondAttribute="leadingMargin" id="cj0-yH-myF"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="hCh-gf-bUp" secondAttribute="bottom" id="3we-kV-aiK"/>
+                                                <constraint firstItem="hCh-gf-bUp" firstAttribute="leading" secondItem="b5h-7H-4Ty" secondAttribute="leading" id="GUS-ib-WyR"/>
+                                                <constraint firstAttribute="trailing" secondItem="hCh-gf-bUp" secondAttribute="trailing" id="NON-Ex-7D2"/>
+                                                <constraint firstItem="hCh-gf-bUp" firstAttribute="top" secondItem="b5h-7H-4Ty" secondAttribute="top" id="TlL-eH-8Kq"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="containerView" destination="hCh-gf-bUp" id="dKC-4z-o2p"/>
+                                            <outlet property="fileNameLabel" destination="I5b-GF-jGq" id="JxS-jw-s29"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="g51-SE-0ye" secondAttribute="trailing" id="6D6-2m-7HJ"/>
+                            <constraint firstItem="g51-SE-0ye" firstAttribute="leading" secondItem="Syz-sH-T4f" secondAttribute="leading" id="e5a-Uf-x8T"/>
+                            <constraint firstItem="g51-SE-0ye" firstAttribute="bottom" secondItem="Syz-sH-T4f" secondAttribute="bottom" id="yra-wk-CU5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Syz-sH-T4f"/>
                     </view>
                     <navigationItem key="navigationItem" title="Song" id="JOW-SZ-jkj">
@@ -27,15 +97,18 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filesCollectionView" destination="g51-SE-0ye" id="IzS-iv-QBd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vs7-bg-ee9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1731" y="857"/>
+            <point key="canvasLocation" x="1730.6532663316582" y="856.83453237410083"/>
         </scene>
         <!--Song Library-->
         <scene sceneID="53Q-H5-VuO">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Akb-YJ-JMX" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Akb-YJ-JMX" customClass="SongMasterTableViewController" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="v0i-do-tsb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,12 +119,28 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mOR-uZ-5la">
-                                <rect key="frame" x="0.0" y="72" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" textLabel="MGk-is-bGe" detailTextLabel="sBe-kP-lnM" style="IBUITableViewCellStyleSubtitle" id="mOR-uZ-5la">
+                                <rect key="frame" x="0.0" y="72" width="375" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mOR-uZ-5la" id="ikd-QT-yfe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MGk-is-bGe">
+                                            <rect key="frame" x="16" y="10" width="77.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sBe-kP-lnM">
+                                            <rect key="frame" x="16" y="31.5" width="31" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -128,6 +217,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="doc.append" catalog="system" width="56" height="64"/>
         <image name="folder.badge.plus" catalog="system" width="64" height="42"/>
         <image name="line.horizontal.3.decrease.circle" catalog="system" width="64" height="60"/>
         <image name="music.note.list" catalog="system" width="64" height="56"/>
