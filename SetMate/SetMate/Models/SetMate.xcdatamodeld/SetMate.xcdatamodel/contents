@@ -10,6 +10,7 @@
     <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
         <attribute name="artist" optional="YES" attributeType="String"/>
         <attribute name="markPlayed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="songID" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="songTitle" attributeType="String"/>
         <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set" inverseName="songs" inverseEntity="Set"/>
@@ -23,7 +24,7 @@
     </entity>
     <elements>
         <element name="Set" positionX="-162.3671875" positionY="-200.1171875" width="128" height="118"/>
-        <element name="Song" positionX="27.890625" positionY="-128.48046875" width="128" height="133"/>
+        <element name="Song" positionX="27.890625" positionY="-128.48046875" width="128" height="148"/>
         <element name="SongFile" positionX="227.32421875" positionY="66.046875" width="128" height="103"/>
     </elements>
 </model>

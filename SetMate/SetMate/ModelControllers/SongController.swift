@@ -11,17 +11,20 @@ import CoreData
 
 class SongController {
 
+	
+
 	// MARK: - CRUD Functions
 
-	func createSong(songTitle: String, artist: String, markPlayed: Bool = false, files: [SongFile]?, songgID: UUID = UUID(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-		Song(songTitle: songTitle, artist: artist, songID: songgID, markPlayed: markPlayed, files: files, context: context)
+	func createSong(songTitle: String, artist: String, notes: String?, markPlayed: Bool = false, files: [SongFile]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+		Song(songTitle: songTitle, artist: artist, notes: notes, markPlayed: markPlayed, files: files, context: context)
 
 		saveToPersistentStore()
 	}
 
-	func updateSong(song: Song, songTitle: String, artist: String, markPlayed: Bool, files: [SongFile]?) {
+	func updateSong(song: Song, songTitle: String, artist: String, notes: String, markPlayed: Bool, files: [SongFile]?) {
 		song.songTitle = songTitle
 		song.artist = artist
+		song.notes = notes
 		song.markPlayed = markPlayed
 		if let files = files {
 			song.songFiles = NSSet(array: files)
