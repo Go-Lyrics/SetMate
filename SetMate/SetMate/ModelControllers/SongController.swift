@@ -13,8 +13,8 @@ class SongController {
 
 	// MARK: - CRUD Functions
 
-	func createSong(songTitle: String, artist: String, notes: String?, markPlayed: Bool = false, files: [SongFile]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-		Song(songTitle: songTitle, artist: artist, notes: notes, markPlayed: markPlayed, files: files, context: context)
+	func createSong(songTitle: String, artist: String, notes: String?, songID: UUID = UUID(), markPlayed: Bool = false, files: [SongFile]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+		Song(songTitle: songTitle, artist: artist, notes: notes, markPlayed: markPlayed, files: files, songID: songID, context: context)
 
 		saveToPersistentStore()
 	}
@@ -28,6 +28,11 @@ class SongController {
 			song.songFiles = NSSet(array: files)
 		}
 
+		saveToPersistentStore()
+	}
+
+	func addSongFilesTo(song: Song, with filePath: String) {
+		SongFile(song: song, filePath: filePath)
 		saveToPersistentStore()
 	}
 

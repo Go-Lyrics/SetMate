@@ -17,11 +17,14 @@ protocol SongDetailViewControllerDelegate {
 
 }
 
-class SongDetailViewController: UIViewController {
+class SongDetailViewController: CollapsableVC {
 
 	@IBOutlet weak var filesCollectionView: UICollectionView!
 	@IBOutlet weak var pdfContainerView: UIView!
-	
+
+	let fileController = FileController()
+	var songController: SongController?
+
 	var delegate: SongDetailViewControllerDelegate?
 	let pdfView = PDFView()
 	var songFiles: [SongFile] = [] {
@@ -33,6 +36,7 @@ class SongDetailViewController: UIViewController {
 	var song: Song? {
 		didSet {
 			updateViews()
+			filesCollectionView.reloadData()
 		}
 	}
 
@@ -40,7 +44,7 @@ class SongDetailViewController: UIViewController {
         super.viewDidLoad()
 		filesCollectionView.delegate = self
 		filesCollectionView.dataSource = self
-
+		fileController.delegate = self
     }
 
 	private func updateViews() {
@@ -90,9 +94,12 @@ class SongDetailViewController: UIViewController {
 
 extension SongDetailViewController: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-//		for url in urls {
-//
-//		}
+		guard let song = song else { return }
+		guard let title = song.songTitle,
+			let id = song.songID else { return }
+		for url in urls {
+			self.fileController.saveFilesWith(url: url, songTitle: title, songID: id)
+		}
 	}
 }
 
@@ -120,4 +127,12 @@ extension SongDetailViewController: SongSelectionDelegate {
     func setSelected(_ selection: Song) {
 		song = selection
     }
+}
+
+extension SongDetailViewController: FileControllerDelegate {
+	func createdURLLocation(_ fileController: FileController, filePath: String) {
+		guard let song = self.song else { return }
+		songController?.addSongFilesTo(song: song, with: filePath)
+		self.filesCollectionView.reloadData()
+	}
 }
