@@ -11,6 +11,8 @@ import CoreData
 
 class SetController {
 	
+	static let shared = SetController()
+	
 	// MARK: - Create
 
 	func createSet(name: String) {
@@ -20,13 +22,17 @@ class SetController {
 	
 	// MARK: - Update
 
-	func updateSet(set: Set, name: String, songs: [Song]?) {
-		set.name = name
-		set.lastModified = Date()
+	func updateSet(set: Set, name: String?, songs: [Song]?) {
+		if let name = name {
+			set.name = name
+		}
 		if let songs = songs {
 			set.songs = NSOrderedSet(array: songs)
 		}
-		saveToPersistentStore()
+		if name != nil || songs != nil {
+			set.lastModified = Date()
+			saveToPersistentStore()
+		}
 	}
 	
 	// MARK: - Delete

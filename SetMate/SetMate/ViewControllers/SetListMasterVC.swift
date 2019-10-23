@@ -20,7 +20,6 @@ class SetListMasterVC: UITableViewController {
 	
 	// MARK: - Properties
 	
-	private let setController = SetController()
 	private weak var delegate: SetSelectionDelegate?
 	private var dateFormatter: DateFormatter {
 		let formatter = DateFormatter()
@@ -29,7 +28,7 @@ class SetListMasterVC: UITableViewController {
 		return formatter
 	}
 	
-	lazy var fetchResultsController: NSFetchedResultsController<Set> = {
+	private lazy var fetchResultsController: NSFetchedResultsController<Set> = {
 		let fetchRequest: NSFetchRequest<Set> = Set.fetchRequest()
 		
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastModified", ascending: false)]
@@ -55,8 +54,6 @@ class SetListMasterVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-//		splitViewController?.preferredDisplayMode = .allVisible
-		
 		prepareDelegate()
 	}
 	
@@ -69,7 +66,7 @@ class SetListMasterVC: UITableViewController {
 		}
 		let okAction = UIAlertAction(title: "Save", style: .default) { (_) in
 			if let setTitle = alert.textFields?.first?.text, !setTitle.isEmpty {
-				self.setController.createSet(name: setTitle)
+				SetController.shared.createSet(name: setTitle)
 			}
 		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -115,7 +112,7 @@ class SetListMasterVC: UITableViewController {
 	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
 			let set = self.fetchResultsController.object(at: indexPath)
-			self.setController.deleteSet(set: set)
+			SetController.shared.deleteSet(set: set)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 			handler(true)
 		}
