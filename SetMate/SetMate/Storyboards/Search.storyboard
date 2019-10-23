@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dlO-hD-IUt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wi7-a6-T4D">
     <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -7,20 +7,201 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="I83-6y-b6i">
+        <!--Search DetailVC-->
+        <scene sceneID="pwq-Xr-bXY">
             <objects>
-                <viewController id="dlO-hD-IUt" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DJ4-Tr-iNz">
+                <viewController id="6dN-cE-KoQ" customClass="SearchDetailVC" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kXP-gD-WvB">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gjI-Hq-Eh1">
+                                <rect key="frame" x="62.5" y="162.5" width="709" height="899"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Is this the real life?
+Is this just fantasy?
+Caught in a landslide,
+No escape from reality.
+
+Open your eyes,
+Look up to the skies and see,
+I'm just a poor boy, I need no sympathy,
+Because I'm easy come, easy go,
+Little high, little low,
+Any way the wind blows doesn't really matter to me, to me.
+
+Mama, just killed a man,
+Put a gun against his head,
+Pulled my trigger, now he's dead.
+Mama, life had just begun,
+But now I've gone and thrown it all away.
+
+Mama, ooh,
+Didn't mean to make you cry,
+If I'm not back again this time tomorrow,
+Carry on, carry on as if nothing really matters.
+
+Too late, my time has come,
+Sends shivers down my spine,
+Body's aching all the time.
+Goodbye, everybody, I've got to go,
+Gotta leave you all behind and face the truth.
+
+Mama, ooh (any way the wind blows),
+I don't wanna die,
+I sometimes wish I'd never been born at all.
+
+I see a little silhouetto of a man,
+Scaramouche, Scaramouche, will you do the Fandango?
+Thunderbolt and lightning,
+Very, very frightening me.
+(Galileo) Galileo.
+(Galileo) Galileo,
+Galileo Figaro
+Magnifico-o-o-o-o.
+
+I'm just a poor boy, nobody loves me.
+He's just a poor boy from a poor family,
+Spare him his life from this monstrosity.
+
+Easy come, easy go, will you let me go?
+Bismillah! No, we will not let you go. (Let him go!)
+Bismillah! We will not let you go. (Let him go!)
+Bismillah! We will not let you go. (Let me go!)
+Will not let you go. (Let me go!)
+Never let you go (Never, never, never, never let me go)
+Oh oh oh oh
+No, no, no, no, no, no, no
+Oh, mama mia, mama mia (Mama mia, let me go.)
+Beelzebub has a devil put aside for me, for me, for me.
+
+So you think you can stone me and spit in my eye?
+So you think you can love me and leave me to die?
+Oh, baby, can't do this to me, baby,
+Just gotta get out, just gotta get right outta here.
+
+(Ooooh, ooh yeah, ooh yeah)
+
+Nothing really matters,
+Anyone can see,
+Nothing really matters,
+Nothing really matters to me.
+
+Any way the wind blows.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="0dB-lK-wlb"/>
+                        <constraints>
+                            <constraint firstItem="gjI-Hq-Eh1" firstAttribute="centerY" secondItem="G95-ku-SeM" secondAttribute="centerY" id="6c2-aX-EWf"/>
+                            <constraint firstItem="gjI-Hq-Eh1" firstAttribute="centerX" secondItem="G95-ku-SeM" secondAttribute="centerX" id="Wpf-kY-wdc"/>
+                            <constraint firstItem="gjI-Hq-Eh1" firstAttribute="height" secondItem="G95-ku-SeM" secondAttribute="height" multiplier="0.8" id="ami-SG-raN"/>
+                            <constraint firstItem="gjI-Hq-Eh1" firstAttribute="width" secondItem="G95-ku-SeM" secondAttribute="width" multiplier="0.85" id="oni-3Y-fA2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G95-ku-SeM"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fzI-Hg-eWf"/>
+                    <connections>
+                        <outlet property="lyricsTextView" destination="gjI-Hq-Eh1" id="bo0-47-BAu"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nhF-QF-Mwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pUv-1u-97T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1793" y="377"/>
+            <point key="canvasLocation" x="-1081.294964028777" y="290.95477386934675"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="yqf-ZP-rWG">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="GdK-q0-8td" customClass="SearchMasterVC" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vrw-ts-1X8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1194"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" textLabel="jHE-t2-WtH" detailTextLabel="R0Z-oQ-ieI" style="IBUITableViewCellStyleSubtitle" id="wmr-Qz-TSS">
+                                <rect key="frame" x="0.0" y="28" width="320" height="55.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wmr-Qz-TSS" id="TYR-V2-uoc">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jHE-t2-WtH">
+                                            <rect key="frame" x="16" y="10" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R0Z-oQ-ieI">
+                                            <rect key="frame" x="16" y="31.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GdK-q0-8td" id="FBl-el-tZM"/>
+                            <outlet property="delegate" destination="GdK-q0-8td" id="9tx-ma-Vbu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="agM-ic-jKT"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0Z-Tw-mgq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1079" y="-345"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JQf-Av-rVt">
+            <objects>
+                <navigationController id="Xob-IK-xmZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VcQ-Uj-Ds3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GdK-q0-8td" kind="relationship" relationship="rootViewController" id="ZYC-RO-1J6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BFc-ia-9Lh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1835" y="-345"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="hp7-cx-QjY">
+            <objects>
+                <splitViewController id="Wi7-a6-T4D" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Xob-IK-xmZ" kind="relationship" relationship="masterViewController" id="JBL-IB-Hxd"/>
+                        <segue destination="PRy-7m-ZkL" kind="relationship" relationship="detailViewController" id="qkP-mP-boX"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cuo-yF-R7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2594" y="-27"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uxx-my-YEc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PRy-7m-ZkL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gue-WJ-eLd">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6dN-cE-KoQ" kind="relationship" relationship="rootViewController" id="d7P-yF-SIJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GLf-bG-fK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1835.2517985611512" y="290.95477386934675"/>
         </scene>
     </scenes>
 </document>

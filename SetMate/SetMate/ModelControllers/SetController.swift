@@ -10,28 +10,34 @@ import Foundation
 import CoreData
 
 class SetController {
+	
+	// MARK: - Create
 
-	func createSet(name: String, lastModified: Date = Date(), performDate: Date? = Date(), id: UUID = UUID(), songs: [Song]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-		Set(name: name, performDate: performDate, id: id, songs: songs, lastModified: lastModified, context: context)
+	func createSet(name: String) {
+		Set(name: name)
 		saveToPersistentStore()
 	}
+	
+	// MARK: - Update
 
-	func updateSet(set: Set, name: String, songs: [Song]?, lastModified: Date = Date(), performDate: Date? = Date()) {
+	func updateSet(set: Set, name: String, songs: [Song]?) {
 		set.name = name
-		set.performDate = performDate
-		set.lastModified = lastModified
+		set.lastModified = Date()
 		if let songs = songs {
-			set.songs = NSSet(array: songs)
+			set.songs = NSOrderedSet(array: songs)
 		}
 		saveToPersistentStore()
 	}
+	
+	// MARK: - Delete
 
 	func deleteSet(set: Set) {
 		let moc = CoreDataStack.shared.mainContext
 		moc.delete(set)
 		saveToPersistentStore()
 	}
-
+	
+	// MARK: - Helpers
 
 	private func loadFromPersistentStore() -> [Set] {
 		let fetchRequest: NSFetchRequest<Set> = Set.fetchRequest()

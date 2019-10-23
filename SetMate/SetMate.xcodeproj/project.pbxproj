@@ -23,6 +23,13 @@
 		37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12A235ECC0F00D62DBA /* SetController.swift */; };
 		37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12C235EDC2B00D62DBA /* SongController.swift */; };
 		37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12E235EE1B300D62DBA /* FileController.swift */; };
+		B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F3235FD72800926BBE /* SetListMasterVC.swift */; };
+		B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */; };
+		B50880F8235FF78100926BBE /* ManageSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F7235FF78100926BBE /* ManageSetListVC.swift */; };
+		B50880FA235FF7D700926BBE /* OrderSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F9235FF7D700926BBE /* OrderSetListVC.swift */; };
+		B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880FD2360A9A100926BBE /* CollapsableVC.swift */; };
+		B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560960235E799600F7D987 /* SearchDetailVC.swift */; };
+		B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560962235E7A7600F7D987 /* SearchMasterVC.swift */; };
 		B5560965235F713300F7D987 /* SetList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560964235F713300F7D987 /* SetList.storyboard */; };
 		B5560967235F714400F7D987 /* Song.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560966235F714400F7D987 /* Song.storyboard */; };
 		B5560969235F715700F7D987 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560968235F715700F7D987 /* Search.storyboard */; };
@@ -48,6 +55,13 @@
 		37AAA12A235ECC0F00D62DBA /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		37AAA12C235EDC2B00D62DBA /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
 		37AAA12E235EE1B300D62DBA /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
+		B50880F3235FD72800926BBE /* SetListMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListMasterVC.swift; sourceTree = "<group>"; };
+		B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListDetailsVC.swift; sourceTree = "<group>"; };
+		B50880F7235FF78100926BBE /* ManageSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSetListVC.swift; sourceTree = "<group>"; };
+		B50880F9235FF7D700926BBE /* OrderSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSetListVC.swift; sourceTree = "<group>"; };
+		B50880FD2360A9A100926BBE /* CollapsableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableVC.swift; sourceTree = "<group>"; };
+		B5560960235E799600F7D987 /* SearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
+		B5560962235E7A7600F7D987 /* SearchMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterVC.swift; sourceTree = "<group>"; };
 		B5560964235F713300F7D987 /* SetList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetList.storyboard; sourceTree = "<group>"; };
 		B5560966235F714400F7D987 /* Song.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Song.storyboard; sourceTree = "<group>"; };
 		B5560968235F715700F7D987 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -160,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */,
+				B50880FD2360A9A100926BBE /* CollapsableVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +183,12 @@
 			isa = PBXGroup;
 			children = (
 				379A7866235FA40D0070C224 /* SongDetailViewController.swift */,
+				B5560962235E7A7600F7D987 /* SearchMasterVC.swift */,
+				B5560960235E799600F7D987 /* SearchDetailVC.swift */,
+				B50880F3235FD72800926BBE /* SetListMasterVC.swift */,
+				B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */,
+				B50880F7235FF78100926BBE /* ManageSetListVC.swift */,
+				B50880F9235FF7D700926BBE /* OrderSetListVC.swift */,
 				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
 			);
 			path = ViewControllers;
@@ -249,14 +270,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */,
+				B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */,
 				37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */,
+				B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */,
 				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
+				B50880FA235FF7D700926BBE /* OrderSetListVC.swift in Sources */,
+				B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */,
 				379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */,
 				379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */,
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
+				B50880F8235FF78100926BBE /* ManageSetListVC.swift in Sources */,
+				B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */,
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
 				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
+				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,
 				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
 				379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */,
 				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
