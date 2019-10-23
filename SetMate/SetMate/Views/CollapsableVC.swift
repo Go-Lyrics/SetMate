@@ -12,24 +12,27 @@ import UIKit
 @IBDesignable
 class CollapsableVC: UIViewController {
 
+	let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(isSwipeIsEnded))
+
 	override func prepareForInterfaceBuilder() {
 		customizeView()
 	}
-	
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		customizeView()
 	}
-	
+
 	func customizeView() {
 		splitViewController?.preferredDisplayMode = .allVisible
 		splitViewController?.presentsWithGesture = false
-		
+
 		navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.down.right.and.arrow.up.left"), style: .plain, target: self, action: #selector(showPrimaryVC))
-		
-		leftEdgeSwipe()
+
+		edgePan.edges = .left
+		view.addGestureRecognizer(edgePan)
 	}
-	
+
 	@objc private func showPrimaryVC() {
 		guard let splitVC = splitViewController else { return }
 		if splitVC.displayMode == .primaryHidden {
@@ -44,12 +47,12 @@ class CollapsableVC: UIViewController {
 			}
 		}
 	}
-	
-	#warning("Edge swip may be buggy")
-	private func leftEdgeSwipe() {
-		let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(showPrimaryVC))
-		edgePan.edges = .left
 
-		view.addGestureRecognizer(edgePan)
+	#warning("Fix later")
+	@objc
+	private func isSwipeIsEnded() {
+		if edgePan.state == .ended {
+			showPrimaryVC()
+		}
 	}
 }

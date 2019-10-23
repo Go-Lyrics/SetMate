@@ -17,6 +17,10 @@ class NewSongViewController: UIViewController {
 	@IBOutlet weak var fileCountLabel: UILabel!
 
 	var songController: SongController?
+	let fileController = FileController()
+	var songID: UUID = UUID()
+
+	var savedFilePaths: [String] = []
 
 	var fileURLs: [URL] = [] {
 		didSet {
@@ -31,6 +35,7 @@ class NewSongViewController: UIViewController {
 		notesTextView.layer.borderColor = UIColor.secondaryLabel.withAlphaComponent(0.3).cgColor
 		notesTextView.layer.borderWidth = 0.5
 		isModalInPresentation = true
+		fileController.delegate = self
     }
 
 	@IBAction func cancelTapped(_ sender: UIButton) {
@@ -45,12 +50,15 @@ class NewSongViewController: UIViewController {
 			!artist.isEmpty else { return }
 
 		let notes = notesTextView.text
-		songController.createSong(songTitle: title, artist: artist, notes: notes, files: nil)
+		songController.createSong(songTitle: title, artist: artist, notes: notes, songID: songID, files: nil)
 		dismiss(animated: true, completion: nil)
 	}
 
 
 	@IBAction func documentPickerPresenter(_ sender: UIButton) {
+		if songTitleTextField.text?.isEmpty ?? true {
+			return
+		}
 		let pdfType = kUTTypePDF as String
 		let jpegType = kUTTypeJPEG as String
 		let pngType = kUTTypePNG as String
@@ -77,5 +85,15 @@ extension NewSongViewController: UIDocumentPickerDelegate {
 
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
 		self.fileURLs = urls
+		guard let title = self.songTitleTextField.text else { return }
+		for url in urls {
+			fileController.saveFilesWith(url: url, songTitle: title, songID: self.songID)
+		}
+	}
+}
+
+extension NewSongViewController: FileControllerDelegate {
+	func createdURLLocation(_ fileController: FileController, filePath: String) {
+		self.savedFilePaths.append(filePath)
 	}
 }
