@@ -27,7 +27,6 @@
 		B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */; };
 		B50880F8235FF78100926BBE /* ManageSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F7235FF78100926BBE /* ManageSetListVC.swift */; };
 		B50880FA235FF7D700926BBE /* OrderSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F9235FF7D700926BBE /* OrderSetListVC.swift */; };
-		B5560934235E530600F7D987 /* MusiXmatchApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560933235E530500F7D987 /* MusiXmatchApiKey.swift */; };
 		B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560960235E799600F7D987 /* SearchDetailVC.swift */; };
 		B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560962235E7A7600F7D987 /* SearchMasterVC.swift */; };
 		B5560965235F713300F7D987 /* SetList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560964235F713300F7D987 /* SetList.storyboard */; };
@@ -59,7 +58,6 @@
 		B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListDetailsVC.swift; sourceTree = "<group>"; };
 		B50880F7235FF78100926BBE /* ManageSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSetListVC.swift; sourceTree = "<group>"; };
 		B50880F9235FF7D700926BBE /* OrderSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSetListVC.swift; sourceTree = "<group>"; };
-		B5560933235E530500F7D987 /* MusiXmatchApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusiXmatchApiKey.swift; sourceTree = "<group>"; };
 		B5560960235E799600F7D987 /* SearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
 		B5560962235E7A7600F7D987 /* SearchMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterVC.swift; sourceTree = "<group>"; };
 		B5560964235F713300F7D987 /* SetList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetList.storyboard; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 		37553A13235E36440035671F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B5560933235E530500F7D987 /* MusiXmatchApiKey.swift */,
 				375539FF235E36290035671F /* AppDelegate.swift */,
 				37553A01235E36290035671F /* SceneDelegate.swift */,
 				37553A0D235E362B0035671F /* Info.plist */,
@@ -281,7 +278,6 @@
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
 				B50880F8235FF78100926BBE /* ManageSetListVC.swift in Sources */,
 				B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */,
-				B5560934235E530600F7D987 /* MusiXmatchApiKey.swift in Sources */,
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
 				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
 				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,

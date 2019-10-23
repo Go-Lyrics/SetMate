@@ -19,6 +19,7 @@ extension Song {
 										context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
 		self.songTitle = songTitle
+		self.artist = artist
 		self.songID = songID
 		self.markPlayed = markPlayed
 		if let files = files {

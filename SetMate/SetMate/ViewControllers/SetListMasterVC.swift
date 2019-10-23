@@ -32,8 +32,7 @@ class SetListMasterVC: UITableViewController {
 	lazy var fetchResultsController: NSFetchedResultsController<Set> = {
 		let fetchRequest: NSFetchRequest<Set> = Set.fetchRequest()
 		
-		#warning("sort by 'last modified' date")
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastModified", ascending: false)]
 		
 		let fetchControl = NSFetchedResultsController(fetchRequest: fetchRequest,
 													  managedObjectContext: CoreDataStack.shared.mainContext,
@@ -56,6 +55,9 @@ class SetListMasterVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+//		splitViewController?.preferredDisplayMode = .allVisible
+		
+		prepareDelegate()
 	}
 	
 	// MARK: - IBActions
@@ -68,7 +70,6 @@ class SetListMasterVC: UITableViewController {
 		let okAction = UIAlertAction(title: "Save", style: .default) { (_) in
 			if let setTitle = alert.textFields?.first?.text, !setTitle.isEmpty {
 				self.setController.createSet(name: setTitle)
-//				self.tableView.reloadData()
 			}
 		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
