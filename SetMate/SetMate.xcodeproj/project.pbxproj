@@ -27,6 +27,8 @@
 		B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F3235FD72800926BBE /* SetListMasterVC.swift */; };
 		B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */; };
 		B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880FD2360A9A100926BBE /* CollapsableVC.swift */; };
+		B50881012361079200926BBE /* OrderSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880FF2361079100926BBE /* OrderSetListVC.swift */; };
+		B50881022361079200926BBE /* ManageSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50881002361079100926BBE /* ManageSetListVC.swift */; };
 		B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560960235E799600F7D987 /* SearchDetailVC.swift */; };
 		B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5560962235E7A7600F7D987 /* SearchMasterVC.swift */; };
 		B5560965235F713300F7D987 /* SetList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560964235F713300F7D987 /* SetList.storyboard */; };
@@ -58,6 +60,8 @@
 		B50880F3235FD72800926BBE /* SetListMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListMasterVC.swift; sourceTree = "<group>"; };
 		B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListDetailsVC.swift; sourceTree = "<group>"; };
 		B50880FD2360A9A100926BBE /* CollapsableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableVC.swift; sourceTree = "<group>"; };
+		B50880FF2361079100926BBE /* OrderSetListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSetListVC.swift; sourceTree = "<group>"; };
+		B50881002361079100926BBE /* ManageSetListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSetListVC.swift; sourceTree = "<group>"; };
 		B5560960235E799600F7D987 /* SearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailVC.swift; sourceTree = "<group>"; };
 		B5560962235E7A7600F7D987 /* SearchMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMasterVC.swift; sourceTree = "<group>"; };
 		B5560964235F713300F7D987 /* SetList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetList.storyboard; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 		37553A1A235E375C0035671F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B50881002361079100926BBE /* ManageSetListVC.swift */,
+				B50880FF2361079100926BBE /* OrderSetListVC.swift */,
 				379A7866235FA40D0070C224 /* SongDetailViewController.swift */,
 				B5560962235E7A7600F7D987 /* SearchMasterVC.swift */,
 				B5560960235E799600F7D987 /* SearchDetailVC.swift */,
@@ -270,6 +276,7 @@
 				B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */,
 				37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */,
 				B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */,
+				B50881022361079200926BBE /* ManageSetListVC.swift in Sources */,
 				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
 				B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */,
@@ -278,6 +285,7 @@
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
 				B5560961235E799600F7D987 /* SearchDetailVC.swift in Sources */,
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
+				B50881012361079200926BBE /* OrderSetListVC.swift in Sources */,
 				379A786F23600A5E0070C224 /* NewSongViewController.swift in Sources */,
 				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
 				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,

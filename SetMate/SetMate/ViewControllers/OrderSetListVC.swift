@@ -18,13 +18,16 @@ class OrderSetListVC: UIViewController {
 	
 	// MARK: - Properties
 	
-	
 	private enum transfer: String {
 		case copy = "Copy"
 		case removeAll = "Remove All"
 	}
 	
-	private var orderedSongs: [Song]?
+	private var orderedSongs: [Song]? {
+		didSet {
+			orderedTableView.reloadData()
+		}
+	}
 	var set: Set?
 	var draftSongs: [Song]? {
 		didSet {
@@ -36,6 +39,14 @@ class OrderSetListVC: UIViewController {
 	
 	// MARK: - Life Cycle
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		orderedSongs = [Song]()
+		
+		setupTableViews()
+	}
+	
 	
 	// MARK: - IBActions
 	
@@ -44,16 +55,18 @@ class OrderSetListVC: UIViewController {
 		
 		switch transfer(rawValue: title) {
 		case .copy:
-			orderedSongs = draftSongs
+			guard let songs = draftSongs else { return }
+			orderedSongs?.append(contentsOf: songs)
+			draftSongs?.removeAll()
 			transferSongsButton.setTitle(transfer.removeAll.rawValue, for: .normal)
 		case .removeAll:
-			orderedSongs = nil
+			guard let songs = orderedSongs else { return }
+			draftSongs?.append(contentsOf: songs)
+			orderedSongs?.removeAll()
 			transferSongsButton.setTitle(transfer.copy.rawValue, for: .normal)
 		case .none:
 			return
 		}
-		
-		orderedTableView.reloadData()
 	}
 	
 	@IBAction func saveButtonTapped(_ sender: Any) {
@@ -64,5 +77,53 @@ class OrderSetListVC: UIViewController {
 	
 	// MARK: - Helpers
 	
+	private func setupTableViews() {
+		draftTableView.dataSource = self
+		draftTableView.delegate = self
+		orderedTableView.dataSource = self
+		orderedTableView.delegate = self
+	}
+}
+
+// MARK: - TableView DataSource & Delegate
+
+extension OrderSetListVC: UITableViewDataSource, UITableViewDelegate {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if tableView == orderedTableView {
+			return orderedSongs?.count ?? 0
+		} else if tableView == draftTableView {
+			return draftSongs?.count ?? 0
+		}
+		return 0
+	}
 	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
+		var song: Song? = nil
+		
+		if tableView == orderedTableView {
+			song = orderedSongs?[indexPath.row]
+		} else if tableView == draftTableView {
+			song = draftSongs?[indexPath.row]
+		}
+		
+		cell.textLabel?.text = song?.songTitle
+		cell.detailTextLabel?.text = song?.artist
+		
+		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if tableView == orderedTableView {
+			guard let transferSong = orderedSongs?[indexPath.row] else { return }
+			
+			orderedSongs?.remove(at: indexPath.row)
+			draftSongs?.append(transferSong)
+		} else if tableView == draftTableView {
+			guard let transferSong = draftSongs?[indexPath.row] else { return }
+			
+			draftSongs?.remove(at: indexPath.row)
+			orderedSongs?.append(transferSong)
+		}
+	}
 }

@@ -20,6 +20,10 @@ class ManageSetListVC: UIViewController {
 	
 	private var songLibrary: [Song]? {
 		didSet {
+			self.songLibrary?.sort(by: { (song1, song2) -> Bool in
+				guard let artist1 = song1.artist, let artist2 = song2.artist else { return false }
+				return artist1 < artist2
+			})
 			libraryTableView.reloadData()
 		}
 	}
@@ -33,7 +37,7 @@ class ManageSetListVC: UIViewController {
 	private lazy var fetchResultsController: NSFetchedResultsController<Song> = {
 		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
 		
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "songTitle", ascending: true)]
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "songTitle", ascending: false)]
 		
 		let fetchControl = NSFetchedResultsController(fetchRequest: fetchRequest,
 													  managedObjectContext: CoreDataStack.shared.mainContext,
@@ -125,7 +129,7 @@ extension ManageSetListVC: UITableViewDataSource, UITableViewDelegate {
 			songLibrary?.remove(at: indexPath.row)
 			draftSongs?.append(transferSong)
 		} else if tableView == draftTableView {
-			guard let transferSong = songLibrary?[indexPath.row] else { return }
+			guard let transferSong = draftSongs?[indexPath.row] else { return }
 			
 			draftSongs?.remove(at: indexPath.row)
 			songLibrary?.append(transferSong)
