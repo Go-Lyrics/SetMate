@@ -71,8 +71,9 @@ class OrderSetListVC: UIViewController {
 	
 	@IBAction func saveButtonTapped(_ sender: Any) {
 		guard let set = set else { return }
-		SetController.shared.updateSet(set: set, name: nil, songs: orderedSongs)
-		dismiss(animated: true, completion: nil)
+		dismiss(animated: true) {
+			SetController.shared.updateSet(set: set, name: nil, songs: self.orderedSongs)
+		}
 	}
 	
 	// MARK: - Helpers
