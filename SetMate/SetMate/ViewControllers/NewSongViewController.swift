@@ -50,7 +50,11 @@ class NewSongViewController: UIViewController {
 			!artist.isEmpty else { return }
 
 		let notes = notesTextView.text
-		songController.createSong(songTitle: title, artist: artist, notes: notes, songID: songID, files: nil)
+
+		let song = songController.createSong(songTitle: title, artist: artist, notes: notes, songID: songID, fileUrls: fileURLs)
+		for url in fileURLs {
+			fileController.saveFilesWith(song: song, url: url)
+		}
 		dismiss(animated: true, completion: nil)
 	}
 
@@ -85,10 +89,6 @@ extension NewSongViewController: UIDocumentPickerDelegate {
 
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
 		self.fileURLs = urls
-		guard let title = self.songTitleTextField.text else { return }
-		for url in urls {
-			fileController.saveFilesWith(url: url, songTitle: title, songID: self.songID)
-		}
 	}
 }
 

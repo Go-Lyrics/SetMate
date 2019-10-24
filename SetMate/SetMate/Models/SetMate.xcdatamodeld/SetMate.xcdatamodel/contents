@@ -14,7 +14,7 @@
         <attribute name="songID" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="songTitle" attributeType="String"/>
         <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set" inverseName="songs" inverseEntity="Set"/>
-        <relationship name="songFiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SongFile" inverseName="song" inverseEntity="SongFile"/>
+        <relationship name="songFiles" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SongFile" inverseName="song" inverseEntity="SongFile"/>
     </entity>
     <entity name="SongFile" representedClassName="SongFile" syncable="YES" codeGenerationType="class">
         <attribute name="filePath" optional="YES" attributeType="URI"/>

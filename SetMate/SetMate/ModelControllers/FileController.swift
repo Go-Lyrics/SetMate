@@ -15,34 +15,13 @@ protocol FileControllerDelegate: AnyObject {
 class FileController {
 
 	let fm = FileManager.default
-
 	weak var delegate: FileControllerDelegate?
 
-	func saveFilesWith(url: URL, songTitle: String, songID: UUID) {
-		let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
-		let fileName = url.lastPathComponent
-		let destinationFilePath = documentsDir
-			.appendingPathComponent(songID.uuidString)
-			.appendingPathComponent(songTitle)
-			.appendingPathComponent(fileName)
-
-		let destinationDirectory = destinationFilePath.deletingLastPathComponent()
-
-
-//		let lastPath = url.lastPathComponent.replacingOccurrences(of: " ", with: "")
-//
-//		let filePath = songID.uuidString + songTitle.replacingOccurrences(of: " ", with: "") + "/" + lastPath
-//
-//		let fileLocation = documentsDir.appendingPathComponent(filePath)
-//
-//		let pathSongTitle = songTitle.replacingOccurrences(of: " ", with: "")
-//
-//		let directoryURL = documentsDir
-//			.appendingPathComponent(songID.uuidString)
-//			.appendingPathComponent(pathSongTitle)
-//			.appendingPathComponent(lastPath)
-
-
+	
+	func saveFilesWith(song: Song, url: URL) {
+		let pathAndDirectoryInfo = createDestinationFilePath(with: song, sourceURL: url)
+		guard let destinationDirectory = pathAndDirectoryInfo.directory,
+			let destinationFilePath = pathAndDirectoryInfo.filePath else { return }
 		do {
 			try fm.createDirectory(at: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
 			try fm.copyItem(at: url, to: destinationFilePath)
@@ -51,7 +30,33 @@ class FileController {
 		}
 
 		delegate?.createdURLLocation(self, filePath: destinationFilePath)
+	}
 
-		print(destinationDirectory)
+
+	func deletFiles(with song: Song) {
+		guard let fileDirectory = createDestinationFilePath(with: song, sourceURL: nil).directory else { return }
+
+		do {
+			try fm.removeItem(at: fileDirectory)
+		} catch {
+			NSLog("Error deleting file")
+		}
+	}
+
+
+	private func createDestinationFilePath(with song: Song, sourceURL: URL?) -> (filePath: URL?, directory: URL?) {
+		let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
+		guard let title = song.songTitle,
+		let id = song.songID else { return (nil, nil) }
+		let destinationDirectory = documentsDir
+		.appendingPathComponent(id.uuidString)
+		.appendingPathComponent(title)
+
+		if let sourceURL = sourceURL {
+			let fileName = sourceURL.lastPathComponent
+			let destinationFilePath = destinationDirectory.appendingPathComponent(fileName)
+			return (destinationFilePath, destinationDirectory)
+		}
+		return (nil, destinationDirectory)
 	}
 }
