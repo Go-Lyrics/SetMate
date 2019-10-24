@@ -20,6 +20,10 @@ class ManageSetListVC: UIViewController {
 	
 	private var songLibrary: [Song]? {
 		didSet {
+			self.songLibrary?.sort(by: { (song1, song2) -> Bool in
+				guard let artist1 = song1.artist, let artist2 = song2.artist else { return false }
+				return artist1 < artist2
+			})
 			libraryTableView.reloadData()
 		}
 	}
@@ -33,14 +37,15 @@ class ManageSetListVC: UIViewController {
 	private lazy var fetchResultsController: NSFetchedResultsController<Song> = {
 		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
 		
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "songTitle", ascending: true)]
+		if let songsIDs = self.draftSongs?.compactMap({$0.songID?.uuidString}), !songsIDs.isEmpty {
+			fetchRequest.predicate = NSPredicate(format: "NOT(songID IN %@)", songsIDs)
+		}
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "songTitle", ascending: false)]
 		
 		let fetchControl = NSFetchedResultsController(fetchRequest: fetchRequest,
 													  managedObjectContext: CoreDataStack.shared.mainContext,
 													  sectionNameKeyPath: "artist",
 													  cacheName: nil)
-		
-		fetchControl.delegate = self
 		
 		do {
 			try fetchControl.performFetch()
@@ -125,53 +130,10 @@ extension ManageSetListVC: UITableViewDataSource, UITableViewDelegate {
 			songLibrary?.remove(at: indexPath.row)
 			draftSongs?.append(transferSong)
 		} else if tableView == draftTableView {
-			guard let transferSong = songLibrary?[indexPath.row] else { return }
+			guard let transferSong = draftSongs?[indexPath.row] else { return }
 			
 			draftSongs?.remove(at: indexPath.row)
 			songLibrary?.append(transferSong)
-		}
-	}
-}
-
-// MARK: - NSFetch Results Controller Delegate
-
-extension ManageSetListVC: NSFetchedResultsControllerDelegate {
-	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		libraryTableView.beginUpdates()
-	}
-	
-	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		libraryTableView.endUpdates()
-	}
-	
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-		switch type {
-		case .insert:
-			guard let newIndexPath = newIndexPath else { return }
-			libraryTableView.insertRows(at: [newIndexPath], with: .automatic)
-		case .delete:
-			guard let indexPath = indexPath else { return }
-			libraryTableView.deleteRows(at: [indexPath], with: .automatic)
-		case .move:
-			guard let oldIndexPath = indexPath, let newIndexPath = newIndexPath else { return }
-			libraryTableView.moveRow(at: oldIndexPath, to: newIndexPath)
-		case .update:
-			guard let indexPath = indexPath else { return }
-			libraryTableView.reloadRows(at: [indexPath], with: .automatic)
-		@unknown default:
-			fatalError()
-		}
-	}
-	
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-		let sectionIndexSet = IndexSet(integer: sectionIndex)
-		switch type {
-		case .insert:
-			libraryTableView.insertSections(sectionIndexSet, with: .automatic)
-		case .delete:
-			libraryTableView.deleteSections(sectionIndexSet, with: .automatic)
-		default:
-			break
 		}
 	}
 }

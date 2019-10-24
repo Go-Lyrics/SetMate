@@ -32,8 +32,8 @@ class SetListDetailsVC: CollapsableVC {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tableView.dataSource = self
 		manageSetListButton.isEnabled = false
+		tableView.dataSource = self
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +71,7 @@ extension SetListDetailsVC: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-		guard let song = set?.songs?.value(forKey: "") as? Song else { return cell}
+		guard let song = set?.songs?[indexPath.row] as? Song else { return cell}
 		
 		cell.textLabel?.text = song.songTitle
 		cell.detailTextLabel?.text = song.artist
