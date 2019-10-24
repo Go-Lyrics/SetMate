@@ -31,7 +31,7 @@ class SongController {
 		saveToPersistentStore()
 	}
 
-	func addSongFilesTo(song: Song, with filePath: String) {
+	func addSongFilesTo(song: Song, with filePath: URL) {
 		SongFile(song: song, filePath: filePath)
 		saveToPersistentStore()
 	}

@@ -20,7 +20,7 @@ class NewSongViewController: UIViewController {
 	let fileController = FileController()
 	var songID: UUID = UUID()
 
-	var savedFilePaths: [String] = []
+	var savedFilePaths: [URL] = []
 
 	var fileURLs: [URL] = [] {
 		didSet {
@@ -93,7 +93,7 @@ extension NewSongViewController: UIDocumentPickerDelegate {
 }
 
 extension NewSongViewController: FileControllerDelegate {
-	func createdURLLocation(_ fileController: FileController, filePath: String) {
+	func createdURLLocation(_ fileController: FileController, filePath: URL) {
 		self.savedFilePaths.append(filePath)
 	}
 }
