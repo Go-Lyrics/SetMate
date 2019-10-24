@@ -27,7 +27,7 @@ class SongDetailViewController: CollapsableVC {
 
 	var delegate: SongDetailViewControllerDelegate?
 	let pdfView = PDFView()
-	var songFiles: [SongFile] = [] {
+	var songFiles: [SongFile]? {
 		didSet {
 
 		}
@@ -115,8 +115,11 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileCell", for: indexPath) as? SongFileCollectionViewCell else { return UICollectionViewCell() }
 
-		let songFile = songFiles[indexPath.row]
-		cell.songFile = songFile
+		DispatchQueue.main.async {
+			if let songFile = self.songFiles {
+				cell.songFile = songFile[indexPath.row]
+			}
+		}
 
 		return cell
 
@@ -130,7 +133,7 @@ extension SongDetailViewController: SongSelectionDelegate {
 }
 
 extension SongDetailViewController: FileControllerDelegate {
-	func createdURLLocation(_ fileController: FileController, filePath: String) {
+	func createdURLLocation(_ fileController: FileController, filePath: URL) {
 		guard let song = self.song else { return }
 		songController?.addSongFilesTo(song: song, with: filePath)
 		self.filesCollectionView.reloadData()

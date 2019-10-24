@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FileControllerDelegate: AnyObject {
-	func createdURLLocation(_ fileController: FileController, filePath: String)
+	func createdURLLocation(_ fileController: FileController, filePath: URL)
 }
 
 class FileController {
@@ -20,20 +20,38 @@ class FileController {
 
 	func saveFilesWith(url: URL, songTitle: String, songID: UUID) {
 		let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
+		let fileName = url.lastPathComponent
+		let destinationFilePath = documentsDir
+			.appendingPathComponent(songID.uuidString)
+			.appendingPathComponent(songTitle)
+			.appendingPathComponent(fileName)
 
-		let filePath = songTitle + "/" + songID.uuidString + "/" + url.lastPathComponent
+		let destinationDirectory = destinationFilePath.deletingLastPathComponent()
 
-		let fileLocation = documentsDir.appendingPathComponent(filePath)
+
+//		let lastPath = url.lastPathComponent.replacingOccurrences(of: " ", with: "")
+//
+//		let filePath = songID.uuidString + songTitle.replacingOccurrences(of: " ", with: "") + "/" + lastPath
+//
+//		let fileLocation = documentsDir.appendingPathComponent(filePath)
+//
+//		let pathSongTitle = songTitle.replacingOccurrences(of: " ", with: "")
+//
+//		let directoryURL = documentsDir
+//			.appendingPathComponent(songID.uuidString)
+//			.appendingPathComponent(pathSongTitle)
+//			.appendingPathComponent(lastPath)
+
 
 		do {
-			let fileData = try Data(contentsOf: url)
-			try fileData.write(to: fileLocation)
+			try fm.createDirectory(at: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
+			try fm.copyItem(at: url, to: destinationFilePath)
 		} catch {
 			NSLog("Error saving file to disk: \(error)")
 		}
 
-		delegate?.createdURLLocation(self, filePath: filePath)
+		delegate?.createdURLLocation(self, filePath: destinationFilePath)
 
-		print(fileLocation)
+		print(destinationDirectory)
 	}
 }
