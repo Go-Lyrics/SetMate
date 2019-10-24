@@ -15,7 +15,6 @@ extension Song {
 										artist: String,
 										notes: String?,
 										markPlayed: Bool,
-										files: [SongFile]?,
 										songID: UUID = UUID(),
 										context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
@@ -24,8 +23,5 @@ extension Song {
 		self.songTitle = songTitle
 		self.songID = songID
 		self.markPlayed = markPlayed
-		if let files = files {
-			self.songFiles = NSSet(array: files)
-		}
 	}
 }

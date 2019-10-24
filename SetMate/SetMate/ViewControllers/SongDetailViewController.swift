@@ -27,7 +27,7 @@ class SongDetailViewController: CollapsableVC {
 
 	var delegate: SongDetailViewControllerDelegate?
 	let pdfView = PDFView()
-	var songFiles: [SongFile] = [] {
+	var songFiles: [SongFile]? {
 		didSet {
 
 		}
@@ -47,12 +47,17 @@ class SongDetailViewController: CollapsableVC {
 		fileController.delegate = self
     }
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+	}
+
 	private func updateViews() {
 		loadViewIfNeeded()
 		guard let song = song else { return }
 		if let songTitle = song.songTitle {
-			title = "Song Title: \(songTitle)"
+			title = songTitle
 		}
+		filesCollectionView.reloadData()
 	}
 
 	@IBAction func fileButtonPresentDocumentPicker(_ sender: UIBarButtonItem) {
@@ -95,10 +100,8 @@ class SongDetailViewController: CollapsableVC {
 extension SongDetailViewController: UIDocumentPickerDelegate {
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
 		guard let song = song else { return }
-		guard let title = song.songTitle,
-			let id = song.songID else { return }
 		for url in urls {
-			self.fileController.saveFilesWith(url: url, songTitle: title, songID: id)
+			self.fileController.saveFilesWith(song: song, url: url)
 		}
 	}
 }
@@ -115,8 +118,11 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileCell", for: indexPath) as? SongFileCollectionViewCell else { return UICollectionViewCell() }
 
-		let songFile = songFiles[indexPath.row]
-		cell.songFile = songFile
+		DispatchQueue.main.async {
+			if let songFiles = self.song?.songFiles {
+				cell.songFile = songFiles.object(at: indexPath.item) as? SongFile
+			}
+		}
 
 		return cell
 
@@ -130,7 +136,7 @@ extension SongDetailViewController: SongSelectionDelegate {
 }
 
 extension SongDetailViewController: FileControllerDelegate {
-	func createdURLLocation(_ fileController: FileController, filePath: String) {
+	func createdURLLocation(_ fileController: FileController, filePath: URL) {
 		guard let song = self.song else { return }
 		songController?.addSongFilesTo(song: song, with: filePath)
 		self.filesCollectionView.reloadData()

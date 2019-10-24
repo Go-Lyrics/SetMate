@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Set" representedClassName="Set" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastModified" attributeType="Date" usesScalarValueType="NO"/>
@@ -14,17 +14,16 @@
         <attribute name="songID" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="songTitle" attributeType="String"/>
         <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set" inverseName="songs" inverseEntity="Set"/>
-        <relationship name="songFiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SongFile" inverseName="song" inverseEntity="SongFile"/>
+        <relationship name="songFiles" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SongFile" inverseName="song" inverseEntity="SongFile"/>
     </entity>
     <entity name="SongFile" representedClassName="SongFile" syncable="YES" codeGenerationType="class">
-        <attribute name="filePath" optional="YES" attributeType="String"/>
+        <attribute name="filePath" optional="YES" attributeType="URI"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="songFiles" inverseEntity="Song"/>
     </entity>
     <elements>
         <element name="Set" positionX="-162.3671875" positionY="-200.1171875" width="128" height="118"/>
         <element name="Song" positionX="27.890625" positionY="-128.48046875" width="128" height="148"/>
-        <element name="SongFile" positionX="227.32421875" positionY="66.046875" width="128" height="103"/>
+        <element name="SongFile" positionX="227.32421875" positionY="66.046875" width="128" height="88"/>
     </elements>
 </model>
