@@ -50,12 +50,20 @@ class NewSongViewController: UIViewController {
 			!artist.isEmpty else { return }
 
 		let notes = notesTextView.text
-
 		let song = songController.createSong(songTitle: title, artist: artist, notes: notes, songID: songID, fileUrls: fileURLs)
-		for url in fileURLs {
+		saveFilesToSongAndDisk(song: song, diskFiles: fileURLs, songFiles: savedFilePaths)
+		dismiss(animated: true, completion: nil)
+	}
+
+	
+	private func saveFilesToSongAndDisk(song: Song, diskFiles: [URL], songFiles: [URL]) {
+		for url in diskFiles {
 			fileController.saveFilesWith(song: song, url: url)
 		}
-		dismiss(animated: true, completion: nil)
+
+		for url in songFiles {
+			songController?.addSongFilesTo(song: song, with: url)
+		}
 	}
 
 
@@ -72,17 +80,6 @@ class NewSongViewController: UIViewController {
 		documentPicker.view.tintColor = .systemPink
 		present(documentPicker, animated: true)
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension NewSongViewController: UIDocumentPickerDelegate {

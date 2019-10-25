@@ -28,7 +28,8 @@ class FileController {
 		} catch {
 			NSLog("Error saving file to disk: \(error)")
 		}
-
+		print("File Path: \(destinationFilePath)")
+		print("File Directory: \(destinationDirectory)")
 		delegate?.createdURLLocation(self, filePath: destinationFilePath)
 	}
 

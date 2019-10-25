@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="1068" width="834" height="61"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="eFA-aj-QAP"/>
+                                    <constraint firstAttribute="height" constant="61" id="CIP-UQ-iIo"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QZG-8V-3Sk">
                                     <size key="itemSize" width="200" height="30"/>
@@ -78,20 +78,20 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1HT-HE-4bL">
-                                <rect key="frame" x="0.0" y="50" width="834" height="1018"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GxV-bd-DeQ" customClass="PDFView">
+                                <rect key="frame" x="0.0" y="50" width="834" height="1010"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="g51-SE-0ye" secondAttribute="trailing" id="6D6-2m-7HJ"/>
-                            <constraint firstItem="1HT-HE-4bL" firstAttribute="leading" secondItem="Syz-sH-T4f" secondAttribute="leading" id="Be7-2c-Kqt"/>
-                            <constraint firstAttribute="trailing" secondItem="1HT-HE-4bL" secondAttribute="trailing" id="Gzr-hX-xZ3"/>
-                            <constraint firstItem="g51-SE-0ye" firstAttribute="leading" secondItem="Syz-sH-T4f" secondAttribute="leading" id="e5a-Uf-x8T"/>
-                            <constraint firstItem="g51-SE-0ye" firstAttribute="top" secondItem="1HT-HE-4bL" secondAttribute="bottom" id="jnG-gB-L52"/>
-                            <constraint firstItem="1HT-HE-4bL" firstAttribute="top" secondItem="Syz-sH-T4f" secondAttribute="top" id="nwr-Nq-A4d"/>
-                            <constraint firstItem="g51-SE-0ye" firstAttribute="bottom" secondItem="Syz-sH-T4f" secondAttribute="bottom" id="yra-wk-CU5"/>
+                            <constraint firstItem="g51-SE-0ye" firstAttribute="bottom" secondItem="Syz-sH-T4f" secondAttribute="bottom" id="7VF-Vq-wbv"/>
+                            <constraint firstItem="g51-SE-0ye" firstAttribute="leading" secondItem="Syz-sH-T4f" secondAttribute="leading" id="GLC-31-Uph"/>
+                            <constraint firstItem="GxV-bd-DeQ" firstAttribute="trailing" secondItem="Syz-sH-T4f" secondAttribute="trailing" id="I7x-Tu-Lg3"/>
+                            <constraint firstItem="g51-SE-0ye" firstAttribute="top" secondItem="GxV-bd-DeQ" secondAttribute="bottom" constant="8" id="Th8-uc-1YK"/>
+                            <constraint firstItem="GxV-bd-DeQ" firstAttribute="top" secondItem="Syz-sH-T4f" secondAttribute="top" id="V2V-32-s8c"/>
+                            <constraint firstItem="GxV-bd-DeQ" firstAttribute="leading" secondItem="Syz-sH-T4f" secondAttribute="leading" id="dhA-O3-3ZD"/>
+                            <constraint firstItem="g51-SE-0ye" firstAttribute="trailing" secondItem="Syz-sH-T4f" secondAttribute="trailing" id="gHp-9f-8Oa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Syz-sH-T4f"/>
                     </view>
@@ -107,12 +107,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filesCollectionView" destination="g51-SE-0ye" id="IzS-iv-QBd"/>
-                        <outlet property="pdfContainerView" destination="1HT-HE-4bL" id="UEC-DM-bhu"/>
+                        <outlet property="pdfContainerView" destination="GxV-bd-DeQ" id="eJE-C3-8n3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vs7-bg-ee9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730.6532663316582" y="856.83453237410083"/>
+            <point key="canvasLocation" x="1730.2158273381297" y="856.78391959799001"/>
         </scene>
         <!--New Song View Controller-->
         <scene sceneID="HFs-4k-WE3">
@@ -267,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search Library" id="YCu-RN-gaj">
-                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
