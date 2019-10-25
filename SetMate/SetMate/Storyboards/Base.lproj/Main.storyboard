@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Set Mate Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="OGI-8E-oQK">
             <objects>
-                <tabBarController id="vwY-0p-58P" customClass="SetMateTabBarController" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="vwY-0p-58P" customClass="MainTabBarController" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FMA-hZ-IK5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -17,9 +17,9 @@
                         <color key="selectedImageTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="o1L-tb-Jjj" kind="relationship" relationship="viewControllers" id="Wtd-hQ-dIq"/>
-                        <segue destination="bF2-LE-ZRB" kind="relationship" relationship="viewControllers" id="l4w-yo-cRS"/>
-                        <segue destination="H4K-sI-i4o" kind="relationship" relationship="viewControllers" id="UZ9-JG-Dt9"/>
+                        <segue destination="H4K-sI-i4o" kind="relationship" relationship="viewControllers" id="wMj-2X-2Wh"/>
+                        <segue destination="bF2-LE-ZRB" kind="relationship" relationship="viewControllers" id="hCD-BD-o1r"/>
+                        <segue destination="o1L-tb-Jjj" kind="relationship" relationship="viewControllers" id="H3y-jR-Szf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8w-Vi-gZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -37,7 +37,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3HW-S9-O7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-832" y="1888"/>
+            <point key="canvasLocation" x="-491" y="1888"/>
         </scene>
         <!--Song-->
         <scene sceneID="sIT-kL-6sa">
@@ -50,16 +50,6 @@
             </objects>
             <point key="canvasLocation" x="-615" y="1888"/>
         </scene>
-        <!--Search-->
-        <scene sceneID="ynC-qa-P9B">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Search" id="ERF-a2-dTP" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="UwI-R5-0MO"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQa-ua-iDB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-221" y="1770"/>
-        </scene>
         <!--Perform-->
         <scene sceneID="X9P-tX-2TG">
             <objects>
@@ -69,7 +59,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCB-XB-MgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="1888"/>
+            <point key="canvasLocation" x="-744" y="1888"/>
         </scene>
     </scenes>
     <resources>

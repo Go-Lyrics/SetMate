@@ -13,7 +13,6 @@ class SongFileCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var containerView: UIView!
 	@IBOutlet weak var fileNameLabel: UILabel!
 
-
 	var songFile: SongFile? {
 		didSet {
 			updateViews()
@@ -28,12 +27,8 @@ class SongFileCollectionViewCell: UICollectionViewCell {
 		containerView.layer.borderColor = UIColor.secondarySystemBackground.cgColor
 	}
 
-
-
-
 	private func updateViews() {
 		guard let file = songFile else { return }
 		fileNameLabel.text = file.fileName
 	}
-
 }
