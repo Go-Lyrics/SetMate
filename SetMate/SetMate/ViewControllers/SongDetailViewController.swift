@@ -47,6 +47,7 @@ class SongDetailViewController: CollapsableVC {
 		filesCollectionView.dataSource = self
 		fileController.delegate = self
 		print("Fartsie")
+
     }
 
 	override func viewWillAppear(_ animated: Bool) {

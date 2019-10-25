@@ -31,7 +31,6 @@ class SetListDetailsVC: CollapsableVC {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		manageSetListButton.isEnabled = false
 		tableView.dataSource = self
 	}
