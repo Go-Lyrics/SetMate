@@ -33,6 +33,9 @@
 		B5560965235F713300F7D987 /* SetList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560964235F713300F7D987 /* SetList.storyboard */; };
 		B5560967235F714400F7D987 /* Song.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560966235F714400F7D987 /* Song.storyboard */; };
 		B556096B235F718100F7D987 /* Perform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B556096A235F718100F7D987 /* Perform.storyboard */; };
+		B5613C8C2362AD2500525DAE /* PerformSetLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */; };
+		B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */; };
+		B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		B5560964235F713300F7D987 /* SetList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetList.storyboard; sourceTree = "<group>"; };
 		B5560966235F714400F7D987 /* Song.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Song.storyboard; sourceTree = "<group>"; };
 		B556096A235F718100F7D987 /* Perform.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Perform.storyboard; sourceTree = "<group>"; };
+		B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetLibraryVC.swift; sourceTree = "<group>"; };
+		B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformDetailsVC.swift; sourceTree = "<group>"; };
+		B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,12 +186,15 @@
 		37553A1A235E375C0035671F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B50881002361079100926BBE /* ManageSetListVC.swift */,
-				B50880FF2361079100926BBE /* OrderSetListVC.swift */,
-				379A7866235FA40D0070C224 /* SongDetailViewController.swift */,
+				B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */,
+				B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */,
+				B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */,
 				B50880F3235FD72800926BBE /* SetListMasterVC.swift */,
 				B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */,
+				B50881002361079100926BBE /* ManageSetListVC.swift */,
+				B50880FF2361079100926BBE /* OrderSetListVC.swift */,
 				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
+				379A7866235FA40D0070C224 /* SongDetailViewController.swift */,
 				379A786E23600A5E0070C224 /* NewSongViewController.swift */,
 			);
 			path = ViewControllers;
@@ -269,10 +278,11 @@
 				B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */,
 				37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */,
 				B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */,
+				B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */,
 				B50881022361079200926BBE /* ManageSetListVC.swift in Sources */,
 				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
-				B5560963235E7A7600F7D987 /* SearchMasterVC.swift in Sources */,
+				B5613C8C2362AD2500525DAE /* PerformSetLibraryVC.swift in Sources */,
 				379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */,
 				379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */,
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
@@ -284,6 +294,7 @@
 				B50881042362405800926BBE /* SongCell.swift in Sources */,
 				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
 				379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */,
+				B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */,
 				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
 				379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */,
 			);

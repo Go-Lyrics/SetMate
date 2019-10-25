@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol SongSelectionDelegate: class {
-    func setSelected(_ selection: Song)
+    func songSelected(_ selection: Song)
 }
 
 class SongMasterTableViewController: UITableViewController {
@@ -79,8 +79,8 @@ class SongMasterTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let song = fetchResultsController.object(at: indexPath)
-        delegate?.setSelected(song)
-		prepareSongDelegate()
+        delegate?.songSelected(song)
+
         if let detailsVC = delegate as? SongDetailViewController,
           let detailsNavController = detailsVC.navigationController {
             splitViewController?.showDetailViewController(detailsNavController, sender: nil)
