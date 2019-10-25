@@ -9,7 +9,7 @@
 import UIKit
 import PDFKit
 
-class PerformDetailsVC: CollapsableVC {
+class PerformDetailsVC: UIViewController {
 
 	// MARK: - IBOutlets
 	
@@ -37,7 +37,8 @@ class PerformDetailsVC: CollapsableVC {
 		super.viewDidLoad()
 		
 		filesCollectionView.dataSource = self
-		
+		navigationController?.hidesBarsOnTap = true
+		tabBarController?.hidesBottomBarWhenPushed = true
 		updateViews()
 	}
 	
