@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vwY-0p-58P">
     <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="OGI-8E-oQK">
+            <objects>
+                <tabBarController id="vwY-0p-58P" customClass="MainTabBarController" customModule="SetMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FMA-hZ-IK5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="H4K-sI-i4o" kind="relationship" relationship="viewControllers" id="wMj-2X-2Wh"/>
+                        <segue destination="bF2-LE-ZRB" kind="relationship" relationship="viewControllers" id="hCD-BD-o1r"/>
+                        <segue destination="o1L-tb-Jjj" kind="relationship" relationship="viewControllers" id="H3y-jR-Szf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8w-Vi-gZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="1477"/>
+        </scene>
+        <!--SetList-->
+        <scene sceneID="xpU-JF-BR9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SetList" id="o1L-tb-Jjj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="list.bullet.below.rectangle" catalog="system" id="h5g-pZ-Vhf">
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="TZy-jw-vlW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3HW-S9-O7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-491" y="1888"/>
+        </scene>
+        <!--Song-->
+        <scene sceneID="sIT-kL-6sa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Song" id="bF2-LE-ZRB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="music.note.list" catalog="system" selectedImage="music.note.list" id="kqw-WQ-n9f"/>
+                    <navigationItem key="navigationItem" id="Srb-5B-66c"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnS-xd-6yK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="1888"/>
+        </scene>
+        <!--Perform-->
+        <scene sceneID="X9P-tX-2TG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Perform" id="H4K-sI-i4o" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="doc.text.viewfinder" catalog="system" id="vfU-Y3-EcF"/>
+                    <navigationItem key="navigationItem" id="2BL-8A-Bvo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fCB-XB-MgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-744" y="1888"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="doc.text.viewfinder" catalog="system" width="64" height="56"/>
+        <image name="list.bullet.below.rectangle" catalog="system" width="64" height="56"/>
+        <image name="music.note.list" catalog="system" width="64" height="56"/>
+    </resources>
+    <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

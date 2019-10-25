@@ -12,6 +12,31 @@
 		37553A07235E36290035671F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37553A05235E36290035671F /* Main.storyboard */; };
 		37553A09235E362B0035671F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37553A08235E362B0035671F /* Assets.xcassets */; };
 		37553A0C235E362B0035671F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37553A0A235E362B0035671F /* LaunchScreen.storyboard */; };
+		379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7866235FA40D0070C224 /* SongDetailViewController.swift */; };
+		379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7868235FCF040070C224 /* SongMasterTableViewController.swift */; };
+		379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */; };
+		379A786F23600A5E0070C224 /* NewSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A786E23600A5E0070C224 /* NewSongViewController.swift */; };
+		379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */; };
+		379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC595235E4FDD001EA87B /* CoreDataStack.swift */; };
+		379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC597235E50D2001EA87B /* Song+Convenience.swift */; };
+		379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379AC599235E7EEF001EA87B /* Set+Convenience.swift */; };
+		37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA128235ECA7A00D62DBA /* SongFile.swift */; };
+		37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12A235ECC0F00D62DBA /* SetController.swift */; };
+		37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12C235EDC2B00D62DBA /* SongController.swift */; };
+		37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AAA12E235EE1B300D62DBA /* FileController.swift */; };
+		B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F3235FD72800926BBE /* SetListMasterVC.swift */; };
+		B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */; };
+		B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880FD2360A9A100926BBE /* CollapsableVC.swift */; };
+		B50881012361079200926BBE /* OrderSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50880FF2361079100926BBE /* OrderSetListVC.swift */; };
+		B50881022361079200926BBE /* ManageSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50881002361079100926BBE /* ManageSetListVC.swift */; };
+		B50881042362405800926BBE /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50881032362405800926BBE /* SongCell.swift */; };
+		B5560965235F713300F7D987 /* SetList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560964235F713300F7D987 /* SetList.storyboard */; };
+		B5560967235F714400F7D987 /* Song.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5560966235F714400F7D987 /* Song.storyboard */; };
+		B556096B235F718100F7D987 /* Perform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B556096A235F718100F7D987 /* Perform.storyboard */; };
+		B5613C8C2362AD2500525DAE /* PerformSetLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */; };
+		B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */; };
+		B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */; };
+		B5613C922362D3F500525DAE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C912362D3F500525DAE /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +47,31 @@
 		37553A08235E362B0035671F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37553A0B235E362B0035671F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37553A0D235E362B0035671F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		379A7866235FA40D0070C224 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
+		379A7868235FCF040070C224 /* SongMasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongMasterTableViewController.swift; sourceTree = "<group>"; };
+		379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFileCollectionViewCell.swift; sourceTree = "<group>"; };
+		379A786E23600A5E0070C224 /* NewSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongViewController.swift; sourceTree = "<group>"; };
+		379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SetMate.xcdatamodel; sourceTree = "<group>"; };
+		379AC595235E4FDD001EA87B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		379AC597235E50D2001EA87B /* Song+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+Convenience.swift"; sourceTree = "<group>"; };
+		379AC599235E7EEF001EA87B /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
+		37AAA128235ECA7A00D62DBA /* SongFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFile.swift; sourceTree = "<group>"; };
+		37AAA12A235ECC0F00D62DBA /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
+		37AAA12C235EDC2B00D62DBA /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
+		37AAA12E235EE1B300D62DBA /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
+		B50880F3235FD72800926BBE /* SetListMasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListMasterVC.swift; sourceTree = "<group>"; };
+		B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListDetailsVC.swift; sourceTree = "<group>"; };
+		B50880FD2360A9A100926BBE /* CollapsableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableVC.swift; sourceTree = "<group>"; };
+		B50880FF2361079100926BBE /* OrderSetListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSetListVC.swift; sourceTree = "<group>"; };
+		B50881002361079100926BBE /* ManageSetListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSetListVC.swift; sourceTree = "<group>"; };
+		B50881032362405800926BBE /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		B5560964235F713300F7D987 /* SetList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetList.storyboard; sourceTree = "<group>"; };
+		B5560966235F714400F7D987 /* Song.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Song.storyboard; sourceTree = "<group>"; };
+		B556096A235F718100F7D987 /* Perform.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Perform.storyboard; sourceTree = "<group>"; };
+		B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetLibraryVC.swift; sourceTree = "<group>"; };
+		B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformDetailsVC.swift; sourceTree = "<group>"; };
+		B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetListVC.swift; sourceTree = "<group>"; };
+		B5613C912362D3F500525DAE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				37553A05235E36290035671F /* Main.storyboard */,
+				B5560964235F713300F7D987 /* SetList.storyboard */,
+				B5560966235F714400F7D987 /* Song.storyboard */,
+				B556096A235F718100F7D987 /* Perform.storyboard */,
 				37553A0A235E362B0035671F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -96,6 +149,11 @@
 		37553A16235E371C0035671F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */,
+				379AC595235E4FDD001EA87B /* CoreDataStack.swift */,
+				379AC597235E50D2001EA87B /* Song+Convenience.swift */,
+				379AC599235E7EEF001EA87B /* Set+Convenience.swift */,
+				37AAA128235ECA7A00D62DBA /* SongFile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -103,6 +161,9 @@
 		37553A17235E37260035671F /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				37AAA12A235ECC0F00D62DBA /* SetController.swift */,
+				37AAA12C235EDC2B00D62DBA /* SongController.swift */,
+				37AAA12E235EE1B300D62DBA /* FileController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -117,6 +178,9 @@
 		37553A19235E37410035671F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */,
+				B50880FD2360A9A100926BBE /* CollapsableVC.swift */,
+				B50881032362405800926BBE /* SongCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +188,17 @@
 		37553A1A235E375C0035671F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5613C912362D3F500525DAE /* MainTabBarController.swift */,
+				B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */,
+				B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */,
+				B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */,
+				B50880F3235FD72800926BBE /* SetListMasterVC.swift */,
+				B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */,
+				B50881002361079100926BBE /* ManageSetListVC.swift */,
+				B50880FF2361079100926BBE /* OrderSetListVC.swift */,
+				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
+				379A7866235FA40D0070C224 /* SongDetailViewController.swift */,
+				379A786E23600A5E0070C224 /* NewSongViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,7 +262,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				37553A0C235E362B0035671F /* LaunchScreen.storyboard in Resources */,
+				B5560965235F713300F7D987 /* SetList.storyboard in Resources */,
 				37553A09235E362B0035671F /* Assets.xcassets in Resources */,
+				B5560967235F714400F7D987 /* Song.storyboard in Resources */,
+				B556096B235F718100F7D987 /* Perform.storyboard in Resources */,
 				37553A07235E36290035671F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,8 +277,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */,
+				B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */,
+				B5613C922362D3F500525DAE /* MainTabBarController.swift in Sources */,
+				37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */,
+				B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */,
+				B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */,
+				B50881022361079200926BBE /* ManageSetListVC.swift in Sources */,
+				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
+				B5613C8C2362AD2500525DAE /* PerformSetLibraryVC.swift in Sources */,
+				379AC598235E50D2001EA87B /* Song+Convenience.swift in Sources */,
+				379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */,
 				37553A02235E36290035671F /* SceneDelegate.swift in Sources */,
+				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
+				B50881012361079200926BBE /* OrderSetListVC.swift in Sources */,
+				379A786F23600A5E0070C224 /* NewSongViewController.swift in Sources */,
+				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
+				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,
+				B50881042362405800926BBE /* SongCell.swift in Sources */,
+				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
+				379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */,
+				B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */,
+				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
+				379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,13 +445,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/SetMate/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.marlonraskin.Go-Lyrics";
+				PRODUCT_BUNDLE_IDENTIFIER = com.augustlight.setmate;
 				PRODUCT_NAME = SetMate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -363,13 +464,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/SetMate/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.marlonraskin.Go-Lyrics";
+				PRODUCT_BUNDLE_IDENTIFIER = com.augustlight.setmate;
 				PRODUCT_NAME = SetMate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -398,6 +500,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		379AC592235E4CDC001EA87B /* SetMate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */,
+			);
+			currentVersion = 379AC593235E4CDC001EA87B /* SetMate.xcdatamodel */;
+			path = SetMate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 375539F4235E36290035671F /* Project object */;
 }
