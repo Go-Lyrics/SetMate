@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FileControllerDelegate: AnyObject {
-	func createdURLLocation(_ fileController: FileController, filePath: URL)
+	func importedSongFile(_ fileController: FileController, filePath: URL, on song: Song)
 }
 
 class FileController {
@@ -17,47 +17,47 @@ class FileController {
 	let fm = FileManager.default
 	weak var delegate: FileControllerDelegate?
 
+
+	func filePaths(for song: Song) -> [URL] {
+		guard let songFiles = song.songFiles?.array as? [SongFile],
+			let songDirectory = directoryFor(song: song) else { return [] }
+		let fileNames = songFiles.compactMap { $0.fileName }
+
+		return fileNames.map { songDirectory.appendingPathComponent($0) }
+	}
+
+	func directoryFor(song: Song) -> URL? {
+		let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
+		guard let id = song.songID?.uuidString,
+			let title = song.songTitle else { return nil }
+		let songDirectory = documentsDir.appendingPathComponent(id).appendingPathComponent(title)
+		return songDirectory
+	}
 	
 	func saveFilesWith(song: Song, url: URL) {
-		let pathAndDirectoryInfo = createDestinationFilePath(with: song, sourceURL: url)
-		guard let destinationDirectory = pathAndDirectoryInfo.directory,
-			let destinationFilePath = pathAndDirectoryInfo.filePath else { return }
+		guard let songDirectory = directoryFor(song: song) else { return }
+		let fileName = url.lastPathComponent
+		let destinationFilePath = songDirectory.appendingPathComponent(fileName)
+
 		do {
-			try fm.createDirectory(at: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
+			try fm.createDirectory(at: songDirectory, withIntermediateDirectories: true, attributes: nil)
 			try fm.copyItem(at: url, to: destinationFilePath)
 		} catch {
 			NSLog("Error saving file to disk: \(error)")
 		}
 		print("File Path: \(destinationFilePath)")
-		print("File Directory: \(destinationDirectory)")
-		delegate?.createdURLLocation(self, filePath: destinationFilePath)
+		print("File Directory: \(songDirectory)")
+		delegate?.importedSongFile(self, filePath: destinationFilePath, on: song)
 	}
 
 
-	func deletFiles(with song: Song) {
-		guard let fileDirectory = createDestinationFilePath(with: song, sourceURL: nil).directory else { return }
+	func deleteFiles(with song: Song) {
+		guard let fileDirectory = directoryFor(song: song) else { return }
 
 		do {
 			try fm.removeItem(at: fileDirectory)
 		} catch {
 			NSLog("Error deleting file")
 		}
-	}
-
-
-	private func createDestinationFilePath(with song: Song, sourceURL: URL?) -> (filePath: URL?, directory: URL?) {
-		let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
-		guard let title = song.songTitle,
-		let id = song.songID else { return (nil, nil) }
-		let destinationDirectory = documentsDir
-		.appendingPathComponent(id.uuidString)
-		.appendingPathComponent(title)
-
-		if let sourceURL = sourceURL {
-			let fileName = sourceURL.lastPathComponent
-			let destinationFilePath = destinationDirectory.appendingPathComponent(fileName)
-			return (destinationFilePath, destinationDirectory)
-		}
-		return (nil, destinationDirectory)
 	}
 }

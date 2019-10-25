@@ -33,7 +33,7 @@ class SongFileCollectionViewCell: UICollectionViewCell {
 
 	private func updateViews() {
 		guard let file = songFile else { return }
-		fileNameLabel.text = file.filePath?.lastPathComponent
+		fileNameLabel.text = file.fileName
 	}
 
 }

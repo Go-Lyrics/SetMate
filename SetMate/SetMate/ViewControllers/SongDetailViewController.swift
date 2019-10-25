@@ -46,6 +46,7 @@ class SongDetailViewController: CollapsableVC {
 		filesCollectionView.delegate = self
 		filesCollectionView.dataSource = self
 		fileController.delegate = self
+		print("Fartsie")
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -76,10 +77,8 @@ class SongDetailViewController: CollapsableVC {
 
 	private func displayFirstPDF() {
 		guard let song = song else { return }
-		guard let files = song.songFiles else { return }
-		guard let songFileArray = files.array as? [SongFile] else { return }
-		guard let firstFile = songFileArray.first?.filePath else { return }
-		if let document = PDFDocument(url: firstFile) {
+		guard let filePath = fileController.filePaths(for: song).first else { return }
+		if let document = PDFDocument(url: filePath) {
 			pdfContainerView.document = document
 		}
 	}
@@ -124,9 +123,8 @@ extension SongDetailViewController: SongSelectionDelegate {
 }
 
 extension SongDetailViewController: FileControllerDelegate {
-	func createdURLLocation(_ fileController: FileController, filePath: URL) {
-		guard let song = self.song else { return }
-		songController?.addSongFilesTo(song: song, with: filePath)
+	func importedSongFile(_ fileController: FileController, filePath: URL, on song: Song) {
+		songController?.addSongFilesTo(song: song, with: filePath.lastPathComponent)
 		self.filesCollectionView.reloadData()
 	}
 }
