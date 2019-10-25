@@ -36,6 +36,7 @@
 		B5613C8C2362AD2500525DAE /* PerformSetLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */; };
 		B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */; };
 		B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */; };
+		B5613C922362D3F500525DAE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C912362D3F500525DAE /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetLibraryVC.swift; sourceTree = "<group>"; };
 		B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformDetailsVC.swift; sourceTree = "<group>"; };
 		B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetListVC.swift; sourceTree = "<group>"; };
+		B5613C912362D3F500525DAE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 		37553A1A235E375C0035671F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5613C912362D3F500525DAE /* MainTabBarController.swift */,
 				B5613C8B2362AD2500525DAE /* PerformSetLibraryVC.swift */,
 				B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */,
 				B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */,
@@ -276,6 +279,7 @@
 			files = (
 				37AAA12D235EDC2B00D62DBA /* SongController.swift in Sources */,
 				B50880FE2360A9A100926BBE /* CollapsableVC.swift in Sources */,
+				B5613C922362D3F500525DAE /* MainTabBarController.swift in Sources */,
 				37AAA129235ECA7A00D62DBA /* SongFile.swift in Sources */,
 				B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */,
 				B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */,
