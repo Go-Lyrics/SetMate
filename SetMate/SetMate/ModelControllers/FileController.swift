@@ -60,21 +60,4 @@ class FileController {
 			NSLog("Error deleting file")
 		}
 	}
-
-
-//	private func createDestinationFilePath(with song: Song, sourceURL: URL?) -> (filePath: URL?, directory: URL?) {
-//		let documentsDir = fm.urls(for: .documentDirectory, in: .userDomainMask).first!
-//		guard let title = song.songTitle,
-//		let id = song.songID else { return (nil, nil) }
-//		let destinationDirectory = documentsDir
-//		.appendingPathComponent(id.uuidString)
-//		.appendingPathComponent(title)
-//
-//		if let sourceURL = sourceURL {
-//			let fileName = sourceURL.lastPathComponent
-//			let destinationFilePath = destinationDirectory.appendingPathComponent(fileName)
-//			return (destinationFilePath, destinationDirectory)
-//		}
-//		return (nil, destinationDirectory)
-//	}
 }
