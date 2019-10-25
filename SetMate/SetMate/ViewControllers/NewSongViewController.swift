@@ -50,7 +50,7 @@ class NewSongViewController: UIViewController {
 			!artist.isEmpty else { return }
 
 		let notes = notesTextView.text
-		let song = songController.createSong(songTitle: title, artist: artist, notes: notes, songID: songID, fileUrls: fileURLs)
+		let song = songController.createSong(songTitle: title, artist: artist, notes: notes, songID: songID)
 		saveFilesToSongAndDisk(song: song, diskFiles: fileURLs, songFiles: savedFilePaths)
 		dismiss(animated: true, completion: nil)
 	}
@@ -59,10 +59,6 @@ class NewSongViewController: UIViewController {
 	private func saveFilesToSongAndDisk(song: Song, diskFiles: [URL], songFiles: [URL]) {
 		for url in diskFiles {
 			fileController.saveFilesWith(song: song, url: url)
-		}
-
-		for url in songFiles {
-			songController?.addSongFilesTo(song: song, with: url)
 		}
 	}
 
@@ -90,7 +86,8 @@ extension NewSongViewController: UIDocumentPickerDelegate {
 }
 
 extension NewSongViewController: FileControllerDelegate {
-	func createdURLLocation(_ fileController: FileController, filePath: URL) {
+	func importedSongFile(_ fileController: FileController, filePath: URL, on song: Song) {
 		self.savedFilePaths.append(filePath)
+		songController?.addSongFilesTo(song: song, with: filePath.lastPathComponent)
 	}
 }

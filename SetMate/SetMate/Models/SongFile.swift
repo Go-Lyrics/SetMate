@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 extension SongFile {
-	@discardableResult convenience init(song: Song, filePath: URL, id: UUID = UUID(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+	@discardableResult convenience init(song: Song, fileName: String, id: UUID = UUID(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
 		self.song = song
-		self.filePath = filePath
+		self.fileName = fileName
 		self.id = id
 	}
 }

@@ -30,7 +30,9 @@
         <scene sceneID="xpU-JF-BR9">
             <objects>
                 <viewControllerPlaceholder storyboardName="SetList" id="o1L-tb-Jjj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="list.bullet.below.rectangle" catalog="system" id="h5g-pZ-Vhf"/>
+                    <tabBarItem key="tabBarItem" title="" image="list.bullet.below.rectangle" catalog="system" id="h5g-pZ-Vhf">
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="TZy-jw-vlW"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3HW-S9-O7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

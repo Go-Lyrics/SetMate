@@ -41,10 +41,12 @@ class OrderSetListVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		orderedSongs = [Song]()
-		
 		setupTableViews()
+		transferSongsButton.layer.borderColor = UIColor.systemIndigo.cgColor
+		transferSongsButton.layer.borderWidth = 1.5
+		transferSongsButton.layer.cornerCurve = .continuous
+		transferSongsButton.layer.cornerRadius = transferSongsButton.frame.height / 2
 	}
 	
 	
@@ -52,7 +54,9 @@ class OrderSetListVC: UIViewController {
 	
 	@IBAction func transferSongsButtonTapped(_ sender: UIButton) {
 		guard let title = sender.currentTitle else { return }
-		
+
+
+
 		switch transfer(rawValue: title) {
 		case .copy:
 			guard let songs = draftSongs else { return }

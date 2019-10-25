@@ -27,8 +27,8 @@ class CollapsableVC: UIViewController {
 		splitViewController?.preferredDisplayMode = .allVisible
 		splitViewController?.presentsWithGesture = false
 
-		navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.down.right.and.arrow.up.left"), style: .plain, target: self, action: #selector(showPrimaryVC))
-		navigationItem.leftBarButtonItem?.tintColor = .systemPink
+		navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.left.and.arrow.down.right"), style: .plain, target: self, action: #selector(showPrimaryVC))
+		navigationItem.leftBarButtonItem?.tintColor = .systemIndigo
 		edgePan.edges = .left
 		view.addGestureRecognizer(edgePan)
 	}
@@ -38,14 +38,14 @@ class CollapsableVC: UIViewController {
 		if splitVC.displayMode == .primaryHidden {
 			UIView.animate(withDuration: 0.3) {
 				self.splitViewController?.preferredDisplayMode = .allVisible
-				self.navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.down.right.and.arrow.up.left")
-				self.navigationItem.leftBarButtonItem?.tintColor = .systemPink
+				self.navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
+				self.navigationItem.leftBarButtonItem?.tintColor = .systemIndigo
 			}
 		} else {
 			UIView.animate(withDuration: 0.3) {
 				self.splitViewController?.preferredDisplayMode = .primaryHidden
-				self.navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")
-				self.navigationItem.leftBarButtonItem?.tintColor = .systemPink
+				self.navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.down.right.and.arrow.up.left")
+				self.navigationItem.leftBarButtonItem?.tintColor = .systemIndigo
 			}
 		}
 	}
