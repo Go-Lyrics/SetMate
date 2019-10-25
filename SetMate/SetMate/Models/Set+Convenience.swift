@@ -16,7 +16,7 @@ extension Set {
 		self.performDate = performDate
 		self.id = id
 		if let songs = songs {
-			self.songs = NSOrderedSet(array: songs)//NSSet(array: songs)
+			self.songs = NSOrderedSet(array: songs)
 		}
 		self.lastModified = Date()
 	}
