@@ -27,9 +27,9 @@ class SongDetailViewController: CollapsableVC {
 
 	var delegate: SongDetailViewControllerDelegate?
 	let pdfView = PDFView()
-	var songFiles: [SongFile]? {
+	var filePaths: [URL]? {
 		didSet {
-
+			displayPDF(from: self.filePaths?.first)
 		}
 	}
 
@@ -37,22 +37,18 @@ class SongDetailViewController: CollapsableVC {
 		didSet {
 			updateViews()
 			filesCollectionView.reloadData()
-			displayFirstPDF()
+			
+			guard let song = self.song else { return }
+			filePaths = fileController.filePaths(for: song)
 		}
 	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//		filesCollectionView.delegate = self
+		
 		filesCollectionView.dataSource = self
 		fileController.delegate = self
-		print("Fartsie")
-
     }
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-	}
 
 	private func updateViews() {
 		loadViewIfNeeded()
@@ -76,10 +72,8 @@ class SongDetailViewController: CollapsableVC {
 		present(documentPicker, animated: true)
 	}
 
-	private func displayFirstPDF() {
-		guard let song = song else { return }
-		guard let filePath = fileController.filePaths(for: song).first else { return }
-		if let document = PDFDocument(url: filePath) {
+	private func displayPDF(from url: URL?) {
+		if let filePath = url, let document = PDFDocument(url: filePath) {
 			pdfContainerView.document = document
 		}
 	}
@@ -110,6 +104,10 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 		cell.songFile = song?.songFiles?.object(at: indexPath.item) as? SongFile
 		
 		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		displayPDF(from: filePaths?[indexPath.item])
 	}
 }
 
