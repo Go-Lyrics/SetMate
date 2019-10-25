@@ -37,7 +37,6 @@ class SongController {
 		if let files = files {
 			song.songFiles = NSOrderedSet(array: files)
 		}
-
 		saveToPersistentStore()
 	}
 
