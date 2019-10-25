@@ -83,6 +83,16 @@ class SongDetailViewController: CollapsableVC {
 			pdfContainerView.document = document
 		}
 	}
+
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "SongDetailsPopover" {
+			guard let popoverVC = segue.destination as? SongDetailsPopoverViewController else { return }
+			guard let song = song else { return }
+			popoverVC.song = song
+			popoverVC.popoverPresentationController?.delegate = self
+		}
+	}
 }
 
 
@@ -123,5 +133,11 @@ extension SongDetailViewController: FileControllerDelegate {
 	func importedSongFile(_ fileController: FileController, filePath: URL, on song: Song) {
 		songController?.addSongFilesTo(song: song, with: filePath.lastPathComponent)
 		self.filesCollectionView.reloadData()
+	}
+}
+
+extension SongDetailViewController: UIPopoverPresentationControllerDelegate {
+	func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+		return UIModalPresentationStyle.none
 	}
 }
