@@ -55,6 +55,7 @@ class NewSongViewController: UIViewController {
 		for url in fileURLs {
 			fileController.saveFilesWith(song: song, url: url)
 		}
+		song.songFiles = NSOrderedSet(array: savedFilePaths)
 		dismiss(animated: true, completion: nil)
 	}
 
@@ -72,17 +73,6 @@ class NewSongViewController: UIViewController {
 		documentPicker.view.tintColor = .systemPink
 		present(documentPicker, animated: true)
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension NewSongViewController: UIDocumentPickerDelegate {

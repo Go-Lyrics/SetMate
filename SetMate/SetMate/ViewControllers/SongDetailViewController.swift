@@ -20,7 +20,7 @@ protocol SongDetailViewControllerDelegate {
 class SongDetailViewController: CollapsableVC {
 
 	@IBOutlet weak var filesCollectionView: UICollectionView!
-	@IBOutlet weak var pdfContainerView: UIView!
+	@IBOutlet weak var pdfContainerView: PDFView!
 
 	let fileController = FileController()
 	var songController: SongController?
@@ -37,6 +37,7 @@ class SongDetailViewController: CollapsableVC {
 		didSet {
 			updateViews()
 			filesCollectionView.reloadData()
+			displayFirstPDF()
 		}
 	}
 
@@ -53,6 +54,8 @@ class SongDetailViewController: CollapsableVC {
 
 	private func updateViews() {
 		loadViewIfNeeded()
+		pdfView.backgroundColor = .systemBackground
+		pdfView.displayMode = .singlePageContinuous
 		guard let song = song else { return }
 		if let songTitle = song.songTitle {
 			title = songTitle
@@ -69,31 +72,17 @@ class SongDetailViewController: CollapsableVC {
 		documentPicker.allowsMultipleSelection = true
 		documentPicker.view.tintColor = .systemPink
 		present(documentPicker, animated: true)
-
 	}
 
-
-	private func loadPDFView() {
-		pdfView.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(pdfView)
-
-		pdfView.leadingAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.leadingAnchor).isActive = true
-		pdfView.trailingAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-		pdfView.topAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.topAnchor).isActive = true
-		pdfView.bottomAnchor.constraint(equalTo: pdfContainerView.safeAreaLayoutGuide.bottomAnchor).isActive = true
+	private func displayFirstPDF() {
+		guard let song = song else { return }
+		guard let files = song.songFiles else { return }
+		guard let songFileArray = files.array as? [SongFile] else { return }
+		guard let firstFile = songFileArray.first?.filePath else { return }
+		if let document = PDFDocument(url: firstFile) {
+			pdfContainerView.document = document
+		}
 	}
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
@@ -123,9 +112,8 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 				cell.songFile = songFiles.object(at: indexPath.item) as? SongFile
 			}
 		}
-
+		
 		return cell
-
 	}
 }
 
