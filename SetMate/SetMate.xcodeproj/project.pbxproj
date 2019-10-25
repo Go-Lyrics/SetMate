@@ -12,8 +12,7 @@
 		37553A07235E36290035671F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37553A05235E36290035671F /* Main.storyboard */; };
 		37553A09235E362B0035671F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37553A08235E362B0035671F /* Assets.xcassets */; };
 		37553A0C235E362B0035671F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37553A0A235E362B0035671F /* LaunchScreen.storyboard */; };
-		37646B3B236109BC00FED9C0 /* OrderSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37646B39236109BC00FED9C0 /* OrderSetListVC.swift */; };
-		37646B3C236109BC00FED9C0 /* ManageSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37646B3A236109BC00FED9C0 /* ManageSetListVC.swift */; };
+		37618B5A23628582007A09ED /* SetMateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37618B5923628582007A09ED /* SetMateTabBarController.swift */; };
 		379A7867235FA40D0070C224 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7866235FA40D0070C224 /* SongDetailViewController.swift */; };
 		379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A7868235FCF040070C224 /* SongMasterTableViewController.swift */; };
 		379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */; };
@@ -47,8 +46,7 @@
 		37553A08235E362B0035671F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37553A0B235E362B0035671F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37553A0D235E362B0035671F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37646B39236109BC00FED9C0 /* OrderSetListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSetListVC.swift; sourceTree = "<group>"; };
-		37646B3A236109BC00FED9C0 /* ManageSetListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSetListVC.swift; sourceTree = "<group>"; };
+		37618B5923628582007A09ED /* SetMateTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMateTabBarController.swift; sourceTree = "<group>"; };
 		379A7866235FA40D0070C224 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		379A7868235FCF040070C224 /* SongMasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongMasterTableViewController.swift; sourceTree = "<group>"; };
 		379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFileCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -197,6 +195,7 @@
 				B50880F5235FD77D00926BBE /* SetListDetailsVC.swift */,
 				379A7868235FCF040070C224 /* SongMasterTableViewController.swift */,
 				379A786E23600A5E0070C224 /* NewSongViewController.swift */,
+				37618B5923628582007A09ED /* SetMateTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -291,6 +290,7 @@
 				379AC594235E4CDC001EA87B /* SetMate.xcdatamodeld in Sources */,
 				B50881012361079200926BBE /* OrderSetListVC.swift in Sources */,
 				379A786F23600A5E0070C224 /* NewSongViewController.swift in Sources */,
+				37618B5A23628582007A09ED /* SetMateTabBarController.swift in Sources */,
 				37AAA12B235ECC0F00D62DBA /* SetController.swift in Sources */,
 				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,
 				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
@@ -441,6 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/SetMate/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/SetMate/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
