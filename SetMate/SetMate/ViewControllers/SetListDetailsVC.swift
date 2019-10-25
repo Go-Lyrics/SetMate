@@ -69,11 +69,10 @@ extension SetListDetailsVC: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-		guard let song = set?.songs?[indexPath.row] as? Song else { return cell}
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath) as? SongCell,
+			let song = set?.songs?[indexPath.row] as? Song else { return UITableViewCell() }
 		
-		cell.textLabel?.text = song.songTitle
-		cell.detailTextLabel?.text = song.artist
+		cell.song = song
 		
 		return cell
 	}
