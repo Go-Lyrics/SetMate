@@ -15,7 +15,7 @@ class ManageSetListVC: UIViewController {
 	
 	@IBOutlet weak var libraryTableView: UITableView!
 	@IBOutlet weak var draftTableView: UITableView!
-	
+
 	// MARK: - Properties
 	
 	private var songLibrary: [Song]? {
@@ -91,7 +91,6 @@ class ManageSetListVC: UIViewController {
 	}
 	
 	// MARK: - Helpers
-	
 	
 }
 

@@ -38,7 +38,8 @@ class SongMasterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
-		prepareDelegate()
+		prepareSongDelegate()
+//		prepareFileDelegate()
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -46,13 +47,12 @@ class SongMasterTableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 
-	private func prepareDelegate() {
+	private func prepareSongDelegate() {
         let splitViewController = self.splitViewController
         let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
 		detailsVC?.songController = songController
         delegate = detailsVC
     }
-
 	
 
     // MARK: - Table view data source
@@ -80,7 +80,7 @@ class SongMasterTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let song = fetchResultsController.object(at: indexPath)
         delegate?.setSelected(song)
-
+		prepareSongDelegate()
         if let detailsVC = delegate as? SongDetailViewController,
           let detailsNavController = detailsVC.navigationController {
             splitViewController?.showDetailViewController(detailsNavController, sender: nil)

@@ -15,12 +15,11 @@ class SongController {
 
 	// MARK: - CRUD Functions
 
-	@discardableResult func createSong(songTitle: String, artist: String, notes: String?, songID: UUID = UUID(), markPlayed: Bool = false, fileUrls: [URL]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Song {
+	@discardableResult func createSong(songTitle: String, artist: String, notes: String?, songID: UUID = UUID(), markPlayed: Bool = false, fileNames: [String] = [], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> Song {
 		let song = Song(songTitle: songTitle, artist: artist, notes: notes, markPlayed: markPlayed, songID: songID, context: context)
-		guard let fileUrls = fileUrls else { return song }
 		var array: [SongFile] = []
-		for url in fileUrls {
-			let songFile = SongFile(song: song, filePath: url)
+		for name in fileNames {
+			let songFile = SongFile(song: song, fileName: name)
 			array.append(songFile)
 		}
 		song.songFiles = NSOrderedSet(array: array)
@@ -40,14 +39,14 @@ class SongController {
 		saveToPersistentStore()
 	}
 
-	func addSongFilesTo(song: Song, with filePath: URL) {
-		SongFile(song: song, filePath: filePath)
+	func addSongFilesTo(song: Song, with fileName: String) {
+		SongFile(song: song, fileName: fileName)
 		saveToPersistentStore()
 	}
 
 	func deleteSong(song: Song) {
 		let moc = CoreDataStack.shared.mainContext
-		fileConroller.deletFiles(with: song)
+		fileConroller.deleteFiles(with: song)
 		moc.delete(song)
 		saveToPersistentStore()
 	}
