@@ -43,10 +43,11 @@ class SongDetailViewController: CollapsableVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		filesCollectionView.delegate = self
+//		filesCollectionView.delegate = self
 		filesCollectionView.dataSource = self
 		fileController.delegate = self
 		print("Fartsie")
+
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -106,11 +107,7 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileCell", for: indexPath) as? SongFileCollectionViewCell else { return UICollectionViewCell() }
 
-		DispatchQueue.main.async {
-			if let songFiles = self.song?.songFiles {
-				cell.songFile = songFiles.object(at: indexPath.item) as? SongFile
-			}
-		}
+		cell.songFile = song?.songFiles?.object(at: indexPath.item) as? SongFile
 		
 		return cell
 	}
