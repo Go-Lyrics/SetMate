@@ -14,7 +14,12 @@ protocol SongSelectionDelegate: class {
 }
 
 class SongMasterTableViewController: UITableViewController {
-
+	
+	// MARK: - IBOutlets
+	
+	
+	// MARK: - Properties
+	
 	let songController = SongController()
 	private weak var delegate: SongSelectionDelegate?
 
@@ -25,7 +30,7 @@ class SongMasterTableViewController: UITableViewController {
 		let songTitleDescriptor = NSSortDescriptor(key: "songTitle", ascending: true)
 		fetchRequest.sortDescriptors = [songTitleDescriptor]
 		let moc = CoreDataStack.shared.mainContext
-		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "songTitle", cacheName: nil)
+		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "artist", cacheName: nil)
 		frc.delegate = self
 		do {
 			try frc.performFetch()
@@ -34,67 +39,20 @@ class SongMasterTableViewController: UITableViewController {
 		}
 		return frc
 	}()
-
+	
+	// MARK: - Life Cycle
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		tableView.tableFooterView = UIView()
 		prepareSongDelegate()
     }
-
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 	}
-
-	private func prepareSongDelegate() {
-        let splitViewController = self.splitViewController
-        let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
-		detailsVC?.songController = songController
-        delegate = detailsVC
-    }
-	
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchResultsController.sections?.count ?? 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchResultsController.sections?[section].numberOfObjects ?? 0
-    }
-
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-
-		let song = fetchResultsController.object(at: indexPath)
-		cell.textLabel?.text = song.songTitle
-		cell.detailTextLabel?.text = song.artist
-
-
-        return cell
-    }
-
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let song = fetchResultsController.object(at: indexPath)
-        delegate?.songSelected(song)
-
-        if let detailsVC = delegate as? SongDetailViewController,
-          let detailsNavController = detailsVC.navigationController {
-            splitViewController?.showDetailViewController(detailsNavController, sender: nil)
-        }
-	}
-
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let song = fetchResultsController.object(at: indexPath)
-			songController.deleteSong(song: song)
-        }
-    }
-
 
     // MARK: - Navigation
 
@@ -109,7 +67,67 @@ class SongMasterTableViewController: UITableViewController {
 		let song = fetchResultsController.object(at: indexPath)
 		detailVC.song = song
     }
+	
+	// MARK: - IBActions
+	
+	
+	// MARK: - Helpers
+	
+	private func prepareSongDelegate() {
+        let splitViewController = self.splitViewController
+        let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
+		detailsVC?.songController = songController
+        delegate = detailsVC
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchResultsController.sections?.count ?? 1
+    }
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		fetchResultsController.sections?[section].name
+	}
+	
+	override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+		fetchResultsController.sectionIndexTitles
+	}
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchResultsController.sections?[section].numberOfObjects ?? 0
+    }
+
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
+		let song = fetchResultsController.object(at: indexPath)
+		
+		cell.textLabel?.text = song.songTitle
+		cell.detailTextLabel?.text = song.artist
+
+        return cell
+    }
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let song = fetchResultsController.object(at: indexPath)
+        delegate?.songSelected(song)
+
+        if let detailsVC = delegate as? SongDetailViewController,
+          let detailsNavController = detailsVC.navigationController {
+            splitViewController?.showDetailViewController(detailsNavController, sender: nil)
+        }
+	}
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let song = fetchResultsController.object(at: indexPath)
+			songController.deleteSong(song: song)
+        }
+    }
 }
+
+// MARK: - Fetched Results Controller Dalegate
 
 extension SongMasterTableViewController: NSFetchedResultsControllerDelegate {
 	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
