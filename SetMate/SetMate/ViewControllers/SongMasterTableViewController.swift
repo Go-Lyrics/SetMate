@@ -14,6 +14,11 @@ protocol SongSelectionDelegate: class {
 }
 
 class SongMasterTableViewController: UITableViewController {
+
+
+	@IBOutlet weak var sortButton: UIBarButtonItem!
+
+
 	
 	// MARK: - IBOutlets
 	
@@ -88,6 +93,14 @@ class SongMasterTableViewController: UITableViewController {
         delegate = detailsVC
     }
 	
+	@IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
+		let alertControllerMessage = "Sort By:"
+		let sortActionController = UIAlertController(title: alertControllerMessage, message: nil, preferredStyle: .actionSheet)
+		sortActionController.popoverPresentationController?.barButtonItem = sender
+		sortActionController.popoverPresentationController?.sourceRect = CGRect(x: -5, y: -5, width: sender.width, height: 0)
+		let sortByArtistAction = UIAlertAction(title: "By artist", style: .default) { (_) in
+			// Sort descriptor method here
+		}
 	func searchFetchedResults(for searchText: String?) {
 		if let searchText = searchText {
 			let predicate = NSPredicate(format: "(songTitle contains[cd] %@) || (artist contains[cd] %@)", searchText, searchText)
@@ -103,6 +116,14 @@ class SongMasterTableViewController: UITableViewController {
         } catch let err {
             print(err)
         }
+
+		let sortBySongTitleAction = UIAlertAction(title: "By song title", style: .default) { (_) in
+			// Sort descriptor method here
+		}
+
+		[sortByArtistAction, sortBySongTitleAction].forEach { sortActionController.addAction($0) }
+		present(sortActionController, animated: true, completion: nil)
+	}
 
     }
 

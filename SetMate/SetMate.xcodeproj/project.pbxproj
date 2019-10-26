@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3753C764236370D800BAC700 /* SongDetailsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753C763236370D800BAC700 /* SongDetailsPopoverViewController.swift */; };
 		37553A00235E36290035671F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375539FF235E36290035671F /* AppDelegate.swift */; };
 		37553A02235E36290035671F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37553A01235E36290035671F /* SceneDelegate.swift */; };
 		37553A07235E36290035671F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37553A05235E36290035671F /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3753C763236370D800BAC700 /* SongDetailsPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailsPopoverViewController.swift; sourceTree = "<group>"; };
 		375539FC235E36290035671F /* SetMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375539FF235E36290035671F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37553A01235E36290035671F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				379A786A235FE8F10070C224 /* SongFileCollectionViewCell.swift */,
 				B50880FD2360A9A100926BBE /* CollapsableVC.swift */,
 				B50881032362405800926BBE /* SongCell.swift */,
+				3753C763236370D800BAC700 /* SongDetailsPopoverViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
 				B5613C9A2364AA3100525DAE /* Extensions.swift in Sources */,
 				379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */,
+				3753C764236370D800BAC700 /* SongDetailsPopoverViewController.swift in Sources */,
 				B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */,
 				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
 				379AC596235E4FDD001EA87B /* CoreDataStack.swift in Sources */,
@@ -449,7 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/SetMate/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +472,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/SetMate/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
