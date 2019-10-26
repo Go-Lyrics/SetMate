@@ -456,10 +456,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="YCu-RN-gaj" id="frS-ao-SPL"/>
                         <outlet property="sortButton" destination="yND-0W-XMk" id="ecF-Gg-QS2"/>
-                    </connections>
-                    <connections>
-                        <outlet property="searchBar" destination="YCu-RN-gaj" id="jR0-iP-EAb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sqi-7H-W9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
