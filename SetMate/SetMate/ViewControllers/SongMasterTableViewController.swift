@@ -19,6 +19,13 @@ class SongMasterTableViewController: UITableViewController {
 	@IBOutlet weak var sortButton: UIBarButtonItem!
 
 
+	
+	// MARK: - IBOutlets
+	
+	@IBOutlet weak var searchBar: UISearchBar!
+	
+	// MARK: - Properties
+	
 	let songController = SongController()
 	private weak var delegate: SongSelectionDelegate?
 
@@ -26,10 +33,14 @@ class SongMasterTableViewController: UITableViewController {
 
 	lazy var fetchResultsController: NSFetchedResultsController<Song> = {
 		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
-		let songTitleDescriptor = NSSortDescriptor(key: "songTitle", ascending: true)
-		fetchRequest.sortDescriptors = [songTitleDescriptor]
+		
+		fetchRequest.sortDescriptors = [
+			NSSortDescriptor(key: "artist", ascending: true),
+			NSSortDescriptor(key: "songTitle", ascending: true)
+		]
 		let moc = CoreDataStack.shared.mainContext
-		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "songTitle", cacheName: nil)
+		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "artist", cacheName: nil)
+		
 		frc.delegate = self
 		do {
 			try frc.performFetch()
@@ -38,19 +49,43 @@ class SongMasterTableViewController: UITableViewController {
 		}
 		return frc
 	}()
-
+	
+	// MARK: - Life Cycle
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		searchBar.delegate = self
+		searchBar.enablesReturnKeyAutomatically = true
 		
 		tableView.tableFooterView = UIView()
 		prepareSongDelegate()
     }
-
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 	}
 
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "NewSongSegue" {
+			guard let newSongVC = segue.destination as? NewSongViewController else { return }
+			newSongVC.songController = songController
+		}
+
+		guard let detailVC = segue.destination as? SongDetailViewController else { return }
+		guard let indexPath = tableView.indexPathForSelectedRow else { return }
+		let song = fetchResultsController.object(at: indexPath)
+		detailVC.song = song
+    }
+	
+	// MARK: - IBActions
+	
+	
+	// MARK: - Helpers
+	
 	private func prepareSongDelegate() {
         let splitViewController = self.splitViewController
         let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
@@ -66,6 +101,21 @@ class SongMasterTableViewController: UITableViewController {
 		let sortByArtistAction = UIAlertAction(title: "By artist", style: .default) { (_) in
 			// Sort descriptor method here
 		}
+	func searchFetchedResults(for searchText: String?) {
+		if let searchText = searchText {
+			let predicate = NSPredicate(format: "(songTitle contains[cd] %@) || (artist contains[cd] %@)", searchText, searchText)
+			fetchResultsController.fetchRequest.predicate = predicate
+			
+		} else {
+			fetchResultsController.fetchRequest.predicate = nil
+		}
+        
+        do {
+            try fetchResultsController.performFetch()
+            tableView.reloadData()
+        } catch let err {
+            print(err)
+        }
 
 		let sortBySongTitleAction = UIAlertAction(title: "By song title", style: .default) { (_) in
 			// Sort descriptor method here
@@ -75,11 +125,21 @@ class SongMasterTableViewController: UITableViewController {
 		present(sortActionController, animated: true, completion: nil)
 	}
 
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchResultsController.sections?.count ?? 1
     }
+	
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		fetchResultsController.sections?[section].name
+	}
+	
+	override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+		fetchResultsController.sectionIndexTitles
+	}
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchResultsController.sections?[section].numberOfObjects ?? 0
@@ -88,11 +148,10 @@ class SongMasterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-
 		let song = fetchResultsController.object(at: indexPath)
+		
 		cell.textLabel?.text = song.songTitle
 		cell.detailTextLabel?.text = song.artist
-
 
         return cell
     }
@@ -107,29 +166,15 @@ class SongMasterTableViewController: UITableViewController {
         }
 	}
 
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let song = fetchResultsController.object(at: indexPath)
 			songController.deleteSong(song: song)
         }
     }
-
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "NewSongSegue" {
-			guard let newSongVC = segue.destination as? NewSongViewController else { return }
-			newSongVC.songController = songController
-		}
-
-		guard let detailVC = segue.destination as? SongDetailViewController else { return }
-		guard let indexPath = tableView.indexPathForSelectedRow else { return }
-		let song = fetchResultsController.object(at: indexPath)
-		detailVC.song = song
-    }
 }
+
+// MARK: - Fetched Results Controller Dalegate
 
 extension SongMasterTableViewController: NSFetchedResultsControllerDelegate {
 	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -171,5 +216,13 @@ extension SongMasterTableViewController: NSFetchedResultsControllerDelegate {
 		default:
 			fatalError()
 		}
+	}
+}
+
+// MARK: - SearchBar Delegate
+
+extension SongMasterTableViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		searchFetchedResults(for: searchBar.text?.optionalText)
 	}
 }

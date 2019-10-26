@@ -41,21 +41,18 @@ class OrderSetListVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		orderedSongs = [Song]()
+		
 		setupTableViews()
-		transferSongsButton.layer.borderColor = UIColor.systemIndigo.cgColor
-		transferSongsButton.layer.borderWidth = 1.5
-		transferSongsButton.layer.cornerCurve = .continuous
-		transferSongsButton.layer.cornerRadius = transferSongsButton.frame.height / 2
+		setupTransferButton()
+		updateTransferButtonTitle()
 	}
-	
 	
 	// MARK: - IBActions
 	
 	@IBAction func transferSongsButtonTapped(_ sender: UIButton) {
 		guard let title = sender.currentTitle else { return }
-
-
 
 		switch transfer(rawValue: title) {
 		case .copy:
@@ -87,6 +84,20 @@ class OrderSetListVC: UIViewController {
 		draftTableView.delegate = self
 		orderedTableView.dataSource = self
 		orderedTableView.delegate = self
+	}
+	
+	private func setupTransferButton() {
+		transferSongsButton.layer.borderColor = UIColor.systemIndigo.cgColor
+		transferSongsButton.layer.borderWidth = 1.5
+		transferSongsButton.layer.cornerCurve = .continuous
+		transferSongsButton.layer.cornerRadius = transferSongsButton.frame.height / 2
+	}
+	
+	private func updateTransferButtonTitle() {
+		guard let draftSongs = draftSongs else { return }
+		let title = draftSongs.isEmpty ? transfer.removeAll.rawValue : transfer.copy.rawValue
+		
+		transferSongsButton.setTitle( title, for: .normal)
 	}
 }
 
@@ -130,5 +141,6 @@ extension OrderSetListVC: UITableViewDataSource, UITableViewDelegate {
 			draftSongs?.remove(at: indexPath.row)
 			orderedSongs?.append(transferSong)
 		}
+		updateTransferButtonTitle()
 	}
 }
