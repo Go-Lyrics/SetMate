@@ -14,7 +14,6 @@ protocol SongDetailViewControllerDelegate {
 
 	func selectedSongFiles(_ viewController: SongDetailViewController, didSelect songFiles: [SongFile])
 	func newSongCreated(_ viewController: SongDetailViewController, song: Song)
-
 }
 
 class SongDetailViewController: CollapsableVC {
@@ -36,7 +35,6 @@ class SongDetailViewController: CollapsableVC {
 	var song: Song? {
 		didSet {
 			updateViews()
-			
 			guard let song = self.song else { return }
 			filePaths = fileController.filePaths(for: song)
 		}
@@ -57,6 +55,10 @@ class SongDetailViewController: CollapsableVC {
 		pdfView.displayMode = .singlePageContinuous
 		
 		title = song?.songTitle
+		if song == nil {
+			pdfContainerView.document = nil
+			filePaths = nil
+		}
 		filesCollectionView.reloadData()
 	}
 
@@ -73,6 +75,7 @@ class SongDetailViewController: CollapsableVC {
 
 	private func displayPDF(from url: URL?) {
 		if let filePath = url, let document = PDFDocument(url: filePath) {
+			pdfContainerView.autoScales = true
 			pdfContainerView.document = document
 		}
 	}
@@ -117,7 +120,7 @@ extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 }
 
 extension SongDetailViewController: SongSelectionDelegate {
-    func songSelected(_ selection: Song) {
+    func songSelected(_ selection: Song?) {
 		song = selection
     }
 }

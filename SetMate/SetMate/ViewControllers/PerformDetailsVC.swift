@@ -72,7 +72,7 @@ class PerformDetailsVC: UIViewController {
 // MARK: - Song Selection Delegate
 
 extension PerformDetailsVC: SongSelectionDelegate {
-	func songSelected(_ selection: Song) {
+	func songSelected(_ selection: Song?) {
 		song = selection
 	}
 }

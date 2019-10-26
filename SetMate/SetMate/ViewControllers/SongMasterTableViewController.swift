@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol SongSelectionDelegate: class {
-    func songSelected(_ selection: Song)
+	func songSelected(_ selection: Song?)
 }
 
 class SongMasterTableViewController: UITableViewController {
@@ -23,7 +23,7 @@ class SongMasterTableViewController: UITableViewController {
 	// MARK: - IBOutlets
 	
 	@IBOutlet weak var searchBar: UISearchBar!
-	
+
 	// MARK: - Properties
 	
 	let songController = SongController()
@@ -52,24 +52,24 @@ class SongMasterTableViewController: UITableViewController {
 	
 	// MARK: - Life Cycle
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		searchBar.delegate = self
 		searchBar.enablesReturnKeyAutomatically = true
 		
 		tableView.tableFooterView = UIView()
 		prepareSongDelegate()
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
 	}
 
-    // MARK: - Navigation
+	// MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "NewSongSegue" {
 			guard let newSongVC = segue.destination as? NewSongViewController else { return }
 			newSongVC.songController = songController
@@ -79,7 +79,7 @@ class SongMasterTableViewController: UITableViewController {
 		guard let indexPath = tableView.indexPathForSelectedRow else { return }
 		let song = fetchResultsController.object(at: indexPath)
 		detailVC.song = song
-    }
+	}
 	
 	// MARK: - IBActions
 	
@@ -87,11 +87,11 @@ class SongMasterTableViewController: UITableViewController {
 	// MARK: - Helpers
 	
 	private func prepareSongDelegate() {
-        let splitViewController = self.splitViewController
-        let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
+		let splitViewController = self.splitViewController
+		let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
 		detailsVC?.songController = songController
-        delegate = detailsVC
-    }
+		delegate = detailsVC
+	}
 	
 	@IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
 		let alertControllerMessage = "Sort By:"
@@ -101,21 +101,6 @@ class SongMasterTableViewController: UITableViewController {
 		let sortByArtistAction = UIAlertAction(title: "By artist", style: .default) { (_) in
 			// Sort descriptor method here
 		}
-	func searchFetchedResults(for searchText: String?) {
-		if let searchText = searchText {
-			let predicate = NSPredicate(format: "(songTitle contains[cd] %@) || (artist contains[cd] %@)", searchText, searchText)
-			fetchResultsController.fetchRequest.predicate = predicate
-			
-		} else {
-			fetchResultsController.fetchRequest.predicate = nil
-		}
-        
-        do {
-            try fetchResultsController.performFetch()
-            tableView.reloadData()
-        } catch let err {
-            print(err)
-        }
 
 		let sortBySongTitleAction = UIAlertAction(title: "By song title", style: .default) { (_) in
 			// Sort descriptor method here
@@ -123,55 +108,73 @@ class SongMasterTableViewController: UITableViewController {
 
 		[sortByArtistAction, sortBySongTitleAction].forEach { sortActionController.addAction($0) }
 		present(sortActionController, animated: true, completion: nil)
+
 	}
 
-    }
+	func searchFetchedResults(for searchText: String?) {
+		if let searchText = searchText {
+			let predicate = NSPredicate(format: "(songTitle contains[cd] %@) || (artist contains[cd] %@)", searchText, searchText)
+			fetchResultsController.fetchRequest.predicate = predicate
 
-    // MARK: - Table view data source
+		} else {
+			fetchResultsController.fetchRequest.predicate = nil
+		}
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchResultsController.sections?.count ?? 1
-    }
-	
+		do {
+			try fetchResultsController.performFetch()
+			tableView.reloadData()
+		} catch let err {
+			print(err)
+		}
+	}
+
+
+	// MARK: - Table view data source
+
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return fetchResultsController.sections?.count ?? 1
+	}
+
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		fetchResultsController.sections?[section].name
 	}
-	
+
 	override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
 		fetchResultsController.sectionIndexTitles
 	}
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchResultsController.sections?[section].numberOfObjects ?? 0
-    }
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return fetchResultsController.sections?[section].numberOfObjects ?? 0
+	}
 
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
 		let song = fetchResultsController.object(at: indexPath)
-		
+
 		cell.textLabel?.text = song.songTitle
 		cell.detailTextLabel?.text = song.artist
 
-        return cell
-    }
+		return cell
+	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let song = fetchResultsController.object(at: indexPath)
-        delegate?.songSelected(song)
+		delegate?.songSelected(song)
 
-        if let detailsVC = delegate as? SongDetailViewController,
-          let detailsNavController = detailsVC.navigationController {
-            splitViewController?.showDetailViewController(detailsNavController, sender: nil)
-        }
+		if let detailsVC = delegate as? SongDetailViewController,
+			let detailsNavController = detailsVC.navigationController {
+			splitViewController?.showDetailViewController(detailsNavController, sender: nil)
+		}
 	}
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let song = fetchResultsController.object(at: indexPath)
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			let song = fetchResultsController.object(at: indexPath)
+			delegate?.songSelected(nil)
 			songController.deleteSong(song: song)
-        }
-    }
+		}
+	}
 }
 
 // MARK: - Fetched Results Controller Dalegate
