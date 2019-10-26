@@ -19,14 +19,17 @@ class PerformDetailsVC: UIViewController {
 	// MARK: - Properties
 	
 	private let fileController = FileController()
+	var filePaths: [URL]? {
+		didSet {
+			displayPDF(from: self.filePaths?.first)
+		}
+	}
 	private var song: Song? {
 		didSet {
-			title = song?.songTitle
+			updateViews()
 			
-			guard let songFiles = song?.songFiles?.array as? [SongFile] else { return }
-			self.songFiles = songFiles
-			displayFirstPDF()
-			filesCollectionView.reloadData()
+			guard let song = self.song else { return }
+			filePaths = fileController.filePaths(for: song)
 		}
 	}
 	private var songFiles = [SongFile]()
@@ -37,8 +40,11 @@ class PerformDetailsVC: UIViewController {
 		super.viewDidLoad()
 		
 		filesCollectionView.dataSource = self
+		filesCollectionView.delegate = self
+		
 		navigationController?.hidesBarsOnTap = true
 		tabBarController?.hidesBottomBarWhenPushed = true
+		
 		updateViews()
 	}
 	
@@ -51,16 +57,19 @@ class PerformDetailsVC: UIViewController {
 	private func updateViews() {
 		pdfContainerView.backgroundColor = .systemBackground
 		pdfContainerView.displayMode = .singlePageContinuous
+		
+		title = song?.songTitle
+		filesCollectionView.reloadData()
 	}
 
-	private func displayFirstPDF() {
-		guard let song = song,
-			let filePath = fileController.filePaths(for: song).first else { return }
-		if let document = PDFDocument(url: filePath) {
+	private func displayPDF(from url: URL?) {
+		if let filePath = url, let document = PDFDocument(url: filePath) {
 			pdfContainerView.document = document
 		}
 	}
 }
+
+// MARK: - Song Selection Delegate
 
 extension PerformDetailsVC: SongSelectionDelegate {
 	func songSelected(_ selection: Song) {
@@ -68,9 +77,9 @@ extension PerformDetailsVC: SongSelectionDelegate {
 	}
 }
 
-// MARK: - CollectionView DataSource
+// MARK: - CollectionView DataSource & Delegate
 
-extension PerformDetailsVC: UICollectionViewDataSource {
+extension PerformDetailsVC: UICollectionViewDataSource, UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		songFiles.count
 	}
@@ -81,5 +90,9 @@ extension PerformDetailsVC: UICollectionViewDataSource {
 		cell.songFile = songFiles[indexPath.item]
 		
 		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		displayPDF(from: filePaths?[indexPath.item])
 	}
 }
