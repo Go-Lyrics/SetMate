@@ -62,6 +62,7 @@ class SetListMasterVC: UITableViewController {
 	@IBAction func newSetButtonTapped(_ sender: Any) {
 		let alert = UIAlertController(title: "New Set", message: nil, preferredStyle: .alert)
 		alert.addTextField { (textField) in
+			textField.autocapitalizationType = .words
 			textField.placeholder = "Set Title:"
 		}
 		let okAction = UIAlertAction(title: "Save", style: .default) { (_) in
@@ -118,7 +119,6 @@ class SetListMasterVC: UITableViewController {
 		let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
 			let set = self.fetchResultsController.object(at: indexPath)
 			SetController.shared.deleteSet(set: set)
-			tableView.deleteRows(at: [indexPath], with: .automatic)
 			handler(true)
 		}
 		
