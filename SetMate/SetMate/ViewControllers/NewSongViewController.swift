@@ -54,14 +54,12 @@ class NewSongViewController: UIViewController {
 		saveFilesToSongAndDisk(song: song, diskFiles: fileURLs, songFiles: savedFilePaths)
 		dismiss(animated: true, completion: nil)
 	}
-
 	
 	private func saveFilesToSongAndDisk(song: Song, diskFiles: [URL], songFiles: [URL]) {
 		for url in diskFiles {
 			fileController.saveFilesWith(song: song, url: url)
 		}
 	}
-
 
 	@IBAction func documentPickerPresenter(_ sender: UIButton) {
 		if songTitleTextField.text?.isEmpty ?? true {

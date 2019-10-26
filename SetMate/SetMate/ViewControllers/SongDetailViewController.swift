@@ -36,7 +36,6 @@ class SongDetailViewController: CollapsableVC {
 	var song: Song? {
 		didSet {
 			updateViews()
-			filesCollectionView.reloadData()
 			
 			guard let song = self.song else { return }
 			filePaths = fileController.filePaths(for: song)
@@ -47,17 +46,17 @@ class SongDetailViewController: CollapsableVC {
         super.viewDidLoad()
 		
 		filesCollectionView.dataSource = self
+		filesCollectionView.delegate = self
 		fileController.delegate = self
+		
     }
 
 	private func updateViews() {
 		loadViewIfNeeded()
 		pdfView.backgroundColor = .systemBackground
 		pdfView.displayMode = .singlePageContinuous
-		guard let song = song else { return }
-		if let songTitle = song.songTitle {
-			title = songTitle
-		}
+		
+		title = song?.songTitle
 		filesCollectionView.reloadData()
 	}
 
@@ -101,11 +100,7 @@ extension SongDetailViewController: UIDocumentPickerDelegate {
 
 extension SongDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		guard let song = self.song else { return 0 }
-		if let files = song.songFiles {
-			return files.count
-		}
-		return 0
+		filePaths?.count ?? 0
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
