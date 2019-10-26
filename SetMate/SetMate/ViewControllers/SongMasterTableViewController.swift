@@ -15,6 +15,10 @@ protocol SongSelectionDelegate: class {
 
 class SongMasterTableViewController: UITableViewController {
 
+
+	@IBOutlet weak var sortButton: UIBarButtonItem!
+
+
 	let songController = SongController()
 	private weak var delegate: SongSelectionDelegate?
 
@@ -54,6 +58,22 @@ class SongMasterTableViewController: UITableViewController {
         delegate = detailsVC
     }
 	
+	@IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
+		let alertControllerMessage = "Sort By:"
+		let sortActionController = UIAlertController(title: alertControllerMessage, message: nil, preferredStyle: .actionSheet)
+		sortActionController.popoverPresentationController?.barButtonItem = sender
+		sortActionController.popoverPresentationController?.sourceRect = CGRect(x: -5, y: -5, width: sender.width, height: 0)
+		let sortByArtistAction = UIAlertAction(title: "By artist", style: .default) { (_) in
+			// Sort descriptor method here
+		}
+
+		let sortBySongTitleAction = UIAlertAction(title: "By song title", style: .default) { (_) in
+			// Sort descriptor method here
+		}
+
+		[sortByArtistAction, sortBySongTitleAction].forEach { sortActionController.addAction($0) }
+		present(sortActionController, animated: true, completion: nil)
+	}
 
     // MARK: - Table view data source
 
