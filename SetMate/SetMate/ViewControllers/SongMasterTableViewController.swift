@@ -26,29 +26,20 @@ class SongMasterTableViewController: UITableViewController {
 	
 	// MARK: - Properties
 	
+	private enum FetchType: String {
+		case artist
+		case song = "songTitle"
+	}
+	
 	let songController = SongController()
 	private weak var delegate: SongSelectionDelegate?
-
-	fileprivate var collapseDetailViewController = true
-
-	lazy var fetchResultsController: NSFetchedResultsController<Song> = {
-		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
-		
-		fetchRequest.sortDescriptors = [
-			NSSortDescriptor(key: "artist", ascending: true),
-			NSSortDescriptor(key: "songTitle", ascending: true)
-		]
-		let moc = CoreDataStack.shared.mainContext
-		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "artist", cacheName: nil)
-		
-		frc.delegate = self
-		do {
-			try frc.performFetch()
-		} catch {
-			fatalError("Error performing fetch for frc: \(error)")
+	private var fetchResultsController: NSFetchedResultsController<Song>?
+	private var fetchType: FetchType? {
+		didSet {
+			fetchResults()
+			tableView.reloadData()
 		}
-		return frc
-	}()
+	}
 	
 	// MARK: - Life Cycle
 	
@@ -57,6 +48,7 @@ class SongMasterTableViewController: UITableViewController {
 		
 		searchBar.delegate = self
 		searchBar.enablesReturnKeyAutomatically = true
+		fetchResults()
 		
 		tableView.tableFooterView = UIView()
 		prepareSongDelegate()
@@ -77,12 +69,28 @@ class SongMasterTableViewController: UITableViewController {
 
 		guard let detailVC = segue.destination as? SongDetailViewController else { return }
 		guard let indexPath = tableView.indexPathForSelectedRow else { return }
-		let song = fetchResultsController.object(at: indexPath)
+		let song = fetchResultsController?.object(at: indexPath)
 		detailVC.song = song
     }
 	
 	// MARK: - IBActions
 	
+	@IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
+		let alertControllerMessage = "Sort By:"
+		let sortActionController = UIAlertController(title: alertControllerMessage, message: nil, preferredStyle: .actionSheet)
+		sortActionController.popoverPresentationController?.barButtonItem = sender
+		sortActionController.popoverPresentationController?.sourceRect = CGRect(x: -5, y: -5, width: sender.width, height: 0)
+		let sortByArtistAction = UIAlertAction(title: "By artist", style: .default) { (_) in
+			self.fetchType = .artist
+		}
+		
+		let sortBySongTitleAction = UIAlertAction(title: "By song title", style: .default) { (_) in
+			self.fetchType = .song
+		}
+		
+		[sortByArtistAction, sortBySongTitleAction].forEach { sortActionController.addAction($0) }
+		present(sortActionController, animated: true, completion: nil)
+	}
 	
 	// MARK: - Helpers
 	
@@ -93,71 +101,82 @@ class SongMasterTableViewController: UITableViewController {
         delegate = detailsVC
     }
 	
-	@IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
-		let alertControllerMessage = "Sort By:"
-		let sortActionController = UIAlertController(title: alertControllerMessage, message: nil, preferredStyle: .actionSheet)
-		sortActionController.popoverPresentationController?.barButtonItem = sender
-		sortActionController.popoverPresentationController?.sourceRect = CGRect(x: -5, y: -5, width: sender.width, height: 0)
-		let sortByArtistAction = UIAlertAction(title: "By artist", style: .default) { (_) in
-			// Sort descriptor method here
-		}
 	func searchFetchedResults(for searchText: String?) {
 		if let searchText = searchText {
 			let predicate = NSPredicate(format: "(songTitle contains[cd] %@) || (artist contains[cd] %@)", searchText, searchText)
-			fetchResultsController.fetchRequest.predicate = predicate
+			fetchResultsController?.fetchRequest.predicate = predicate
 			
 		} else {
-			fetchResultsController.fetchRequest.predicate = nil
+			fetchResultsController?.fetchRequest.predicate = nil
 		}
-        
-        do {
-            try fetchResultsController.performFetch()
-            tableView.reloadData()
-        } catch let err {
-            print(err)
-        }
-
-		let sortBySongTitleAction = UIAlertAction(title: "By song title", style: .default) { (_) in
-			// Sort descriptor method here
+		
+		do {
+			try fetchResultsController?.performFetch()
+			tableView.reloadData()
+		} catch let err {
+			print(err)
 		}
-
-		[sortByArtistAction, sortBySongTitleAction].forEach { sortActionController.addAction($0) }
-		present(sortActionController, animated: true, completion: nil)
 	}
-
-    }
+	
+	private func fetchResults() {
+		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
+		var sectionName = ""
+		let sortByArtist = NSSortDescriptor(key: FetchType.artist.rawValue, ascending: true)
+		let sortBySong = NSSortDescriptor(key: FetchType.song.rawValue, ascending: true)
+		
+		switch fetchType {
+		case .song:
+			sectionName = "\(FetchType.song.rawValue).firstChar"
+			fetchRequest.sortDescriptors = [sortBySong, sortByArtist]
+		default:	//artist
+			sectionName = FetchType.artist.rawValue
+			fetchRequest.sortDescriptors = [sortByArtist, sortBySong]
+		}
+		
+		let moc = CoreDataStack.shared.mainContext
+		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: sectionName, cacheName: nil)
+		frc.delegate = self
+		
+		do {
+			try frc.performFetch()
+		} catch {
+			fatalError("Error performing fetch for frc: \(error)")
+		}
+		
+		fetchResultsController = frc
+	}
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchResultsController.sections?.count ?? 1
+        return fetchResultsController?.sections?.count ?? 1
     }
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		fetchResultsController.sections?[section].name
+		fetchResultsController?.sections?[section].name
 	}
 	
 	override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-		fetchResultsController.sectionIndexTitles
+		fetchResultsController?.sectionIndexTitles
 	}
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchResultsController.sections?[section].numberOfObjects ?? 0
+        return fetchResultsController?.sections?[section].numberOfObjects ?? 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
-		let song = fetchResultsController.object(at: indexPath)
+		let song = fetchResultsController?.object(at: indexPath)
 		
-		cell.textLabel?.text = song.songTitle
-		cell.detailTextLabel?.text = song.artist
+		cell.textLabel?.text = song?.songTitle
+		cell.detailTextLabel?.text = song?.artist
 
         return cell
     }
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let song = fetchResultsController.object(at: indexPath)
+		guard let song = fetchResultsController?.object(at: indexPath) else { return }
         delegate?.songSelected(song)
 
         if let detailsVC = delegate as? SongDetailViewController,
@@ -168,7 +187,7 @@ class SongMasterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let song = fetchResultsController.object(at: indexPath)
+			guard let song = fetchResultsController?.object(at: indexPath) else { return }
 			songController.deleteSong(song: song)
         }
     }

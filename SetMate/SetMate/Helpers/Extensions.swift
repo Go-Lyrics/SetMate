@@ -14,3 +14,9 @@ extension String {
 		return (trimmedText).isEmpty ? nil : trimmedText
 	}
 }
+
+extension NSString {
+	@objc var firstChar: String? {
+		return self.substring(to: 1)
+	}
+}
