@@ -17,6 +17,7 @@ class SongMasterTableViewController: UITableViewController {
 	
 	// MARK: - IBOutlets
 	
+	@IBOutlet weak var searchBar: UISearchBar!
 	
 	// MARK: - Properties
 	
@@ -27,10 +28,14 @@ class SongMasterTableViewController: UITableViewController {
 
 	lazy var fetchResultsController: NSFetchedResultsController<Song> = {
 		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
-		let songTitleDescriptor = NSSortDescriptor(key: "songTitle", ascending: true)
-		fetchRequest.sortDescriptors = [songTitleDescriptor]
+		
+		fetchRequest.sortDescriptors = [
+			NSSortDescriptor(key: "artist", ascending: true),
+			NSSortDescriptor(key: "songTitle", ascending: true)
+		]
 		let moc = CoreDataStack.shared.mainContext
 		let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "artist", cacheName: nil)
+		
 		frc.delegate = self
 		do {
 			try frc.performFetch()
@@ -44,6 +49,9 @@ class SongMasterTableViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		searchBar.delegate = self
+		searchBar.enablesReturnKeyAutomatically = true
 		
 		tableView.tableFooterView = UIView()
 		prepareSongDelegate()
@@ -78,6 +86,24 @@ class SongMasterTableViewController: UITableViewController {
         let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SongDetailViewController
 		detailsVC?.songController = songController
         delegate = detailsVC
+    }
+	
+	func searchFetchedResults(for searchText: String?) {
+		if let searchText = searchText {
+			let predicate = NSPredicate(format: "(songTitle contains[cd] %@) || (artist contains[cd] %@)", searchText, searchText)
+			fetchResultsController.fetchRequest.predicate = predicate
+			
+		} else {
+			fetchResultsController.fetchRequest.predicate = nil
+		}
+        
+        do {
+            try fetchResultsController.performFetch()
+            tableView.reloadData()
+        } catch let err {
+            print(err)
+        }
+
     }
 
     // MARK: - Table view data source
@@ -169,5 +195,13 @@ extension SongMasterTableViewController: NSFetchedResultsControllerDelegate {
 		default:
 			fatalError()
 		}
+	}
+}
+
+// MARK: - SearchBar Delegate
+
+extension SongMasterTableViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		searchFetchedResults(for: searchBar.text?.optionalText)
 	}
 }

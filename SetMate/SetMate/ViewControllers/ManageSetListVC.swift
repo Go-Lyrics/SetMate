@@ -40,7 +40,10 @@ class ManageSetListVC: UIViewController {
 		if let songsIDs = self.draftSongs?.compactMap({$0.songID?.uuidString}), !songsIDs.isEmpty {
 			fetchRequest.predicate = NSPredicate(format: "NOT(songID IN %@)", songsIDs)
 		}
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "songTitle", ascending: false)]
+		fetchRequest.sortDescriptors = [
+			NSSortDescriptor(key: "artist", ascending: true),
+			NSSortDescriptor(key: "songTitle", ascending: true)
+		]
 		
 		let fetchControl = NSFetchedResultsController(fetchRequest: fetchRequest,
 													  managedObjectContext: CoreDataStack.shared.mainContext,

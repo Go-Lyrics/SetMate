@@ -37,6 +37,7 @@
 		B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */; };
 		B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */; };
 		B5613C922362D3F500525DAE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C912362D3F500525DAE /* MainTabBarController.swift */; };
+		B5613C9A2364AA3100525DAE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C992364AA3100525DAE /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		B5613C8D2362AF9200525DAE /* PerformDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformDetailsVC.swift; sourceTree = "<group>"; };
 		B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetListVC.swift; sourceTree = "<group>"; };
 		B5613C912362D3F500525DAE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B5613C992364AA3100525DAE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		37553A15235E36920035671F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B5613C992364AA3100525DAE /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				B50880F4235FD72800926BBE /* SetListMasterVC.swift in Sources */,
 				B50881042362405800926BBE /* SongCell.swift in Sources */,
 				379A786B235FE8F10070C224 /* SongFileCollectionViewCell.swift in Sources */,
+				B5613C9A2364AA3100525DAE /* Extensions.swift in Sources */,
 				379A7869235FCF040070C224 /* SongMasterTableViewController.swift in Sources */,
 				B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */,
 				379AC59A235E7EEF001EA87B /* Set+Convenience.swift in Sources */,
