@@ -377,12 +377,9 @@
                                                     <constraint firstAttribute="width" constant="1" id="8oQ-mH-Zqx"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyv-la-j5J" customClass="RoundedButton" customModule="SetMate" customModuleProvider="target">
-                                                <rect key="frame" x="9" y="356.5" width="125" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyv-la-j5J">
+                                                <rect key="frame" x="35.5" y="356.5" width="72" height="38"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="125" id="7tz-J8-XXv"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="14" minY="8" maxX="14" maxY="8"/>
                                                 <state key="normal" title="Copy">

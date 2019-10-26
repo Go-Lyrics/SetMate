@@ -45,6 +45,7 @@ class OrderSetListVC: UIViewController {
 		orderedSongs = [Song]()
 		
 		setupTableViews()
+		setupTransferButton()
 		updateTransferButtonTitle()
 	}
 	
@@ -83,6 +84,13 @@ class OrderSetListVC: UIViewController {
 		draftTableView.delegate = self
 		orderedTableView.dataSource = self
 		orderedTableView.delegate = self
+	}
+	
+	private func setupTransferButton() {
+		transferSongsButton.layer.borderColor = UIColor.systemIndigo.cgColor
+		transferSongsButton.layer.borderWidth = 1.5
+		transferSongsButton.layer.cornerCurve = .continuous
+		transferSongsButton.layer.cornerRadius = transferSongsButton.frame.height / 2
 	}
 	
 	private func updateTransferButtonTitle() {
