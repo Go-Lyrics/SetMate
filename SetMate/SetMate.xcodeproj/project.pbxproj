@@ -39,6 +39,7 @@
 		B5613C902362B2EA00525DAE /* PerformSetListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */; };
 		B5613C922362D3F500525DAE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C912362D3F500525DAE /* MainTabBarController.swift */; };
 		B5613C9A2364AA3100525DAE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C992364AA3100525DAE /* Extensions.swift */; };
+		B5613C9C2364ED0D00525DAE /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5613C9B2364ED0C00525DAE /* FetchedResultsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		B5613C8F2362B2EA00525DAE /* PerformSetListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformSetListVC.swift; sourceTree = "<group>"; };
 		B5613C912362D3F500525DAE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B5613C992364AA3100525DAE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B5613C9B2364ED0C00525DAE /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				B5613C992364AA3100525DAE /* Extensions.swift */,
+				B5613C9B2364ED0C00525DAE /* FetchedResultsController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				B50880F6235FD77D00926BBE /* SetListDetailsVC.swift in Sources */,
 				B5613C8E2362AF9200525DAE /* PerformDetailsVC.swift in Sources */,
 				B50881022361079200926BBE /* ManageSetListVC.swift in Sources */,
+				B5613C9C2364ED0D00525DAE /* FetchedResultsController.swift in Sources */,
 				37AAA12F235EE1B300D62DBA /* FileController.swift in Sources */,
 				37553A00235E36290035671F /* AppDelegate.swift in Sources */,
 				B5613C8C2362AD2500525DAE /* PerformSetLibraryVC.swift in Sources */,

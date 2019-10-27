@@ -18,46 +18,21 @@ class ManageSetListVC: UIViewController {
 
 	// MARK: - Properties
 	
-	private var songLibrary: [Song]? {
-		didSet {
-			self.songLibrary?.sort(by: { (song1, song2) -> Bool in
-				guard let artist1 = song1.artist, let artist2 = song2.artist else { return false }
-				return artist1 < artist2
-			})
-			libraryTableView.reloadData()
-		}
-	}
 	private var draftSongs: [Song]? {
 		didSet {
 			if isViewLoaded {
+				self.fetchedSongResults = fetchedResultsController.fetchSongResults(sortedBy: nil, excluding: self.draftSongs)
 				draftTableView.reloadData()
+				libraryTableView.reloadData()
 			}
 		}
 	}
-	private lazy var fetchResultsController: NSFetchedResultsController<Song> = {
-		let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
-		
-		if let songsIDs = self.draftSongs?.compactMap({$0.songID?.uuidString}), !songsIDs.isEmpty {
-			fetchRequest.predicate = NSPredicate(format: "NOT(songID IN %@)", songsIDs)
-		}
-		fetchRequest.sortDescriptors = [
-			NSSortDescriptor(key: "artist", ascending: true),
-			NSSortDescriptor(key: "songTitle", ascending: true)
-		]
-		
-		let fetchControl = NSFetchedResultsController(fetchRequest: fetchRequest,
-													  managedObjectContext: CoreDataStack.shared.mainContext,
-													  sectionNameKeyPath: "artist",
-													  cacheName: nil)
-		
-		do {
-			try fetchControl.performFetch()
-		} catch {
-			fatalError("Error performing fetch for fetchControl: \(error)")
-		}
-		
-		return fetchControl
+	private lazy var fetchedResultsController: FetchedResultsController = {
+		let fetchController = FetchedResultsController(tableView: self.libraryTableView)
+		return fetchController
 	}()
+	private var fetchedSongResults: NSFetchedResultsController<Song>?
+	
 	var set: Set? {
 		didSet {
 			draftSongs = set?.songs?.array as? [Song]
@@ -74,8 +49,9 @@ class ManageSetListVC: UIViewController {
 		libraryTableView.delegate = self
 		draftTableView.dataSource = self
 		draftTableView.delegate = self
-		
-		songLibrary = fetchResultsController.fetchedObjects
+
+		fetchedSongResults = fetchedResultsController.fetchSongResults(sortedBy: nil, excluding: self.draftSongs)
+		draftTableView.reloadData()
 	}
 	
 	// MARK: - IBActions
@@ -100,9 +76,24 @@ class ManageSetListVC: UIViewController {
 // MARK: - TableView DataSource & Delegate
 
 extension ManageSetListVC: UITableViewDataSource, UITableViewDelegate {
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		if tableView == libraryTableView {
+			return fetchedSongResults?.sections?.count ?? 0
+		}
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if tableView == libraryTableView {
+			return fetchedSongResults?.sections?[section].name
+		}
+		return nil
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if tableView == libraryTableView {
-			return songLibrary?.count ?? 0
+			return fetchedSongResults?.sections?[section].numberOfObjects ?? 0
 		} else if tableView == draftTableView {
 			return draftSongs?.count ?? 0
 		}
@@ -114,7 +105,7 @@ extension ManageSetListVC: UITableViewDataSource, UITableViewDelegate {
 		var song: Song? = nil
 		
 		if tableView == libraryTableView {
-			song = songLibrary?[indexPath.row]
+			song = fetchedSongResults?.object(at: indexPath)
 		} else if tableView == draftTableView {
 			song = draftSongs?[indexPath.row]
 		}
@@ -127,15 +118,12 @@ extension ManageSetListVC: UITableViewDataSource, UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if tableView == libraryTableView {
-			guard let transferSong = songLibrary?[indexPath.row] else { return }
+			guard let transferSong = fetchedSongResults?.object(at: indexPath) else { return }
 			
-			songLibrary?.remove(at: indexPath.row)
 			draftSongs?.append(transferSong)
-		} else if tableView == draftTableView {
-			guard let transferSong = draftSongs?[indexPath.row] else { return }
-			
+		}
+		if tableView == draftTableView {
 			draftSongs?.remove(at: indexPath.row)
-			songLibrary?.append(transferSong)
 		}
 	}
 }
