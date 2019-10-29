@@ -72,9 +72,8 @@ class OrderSetListVC: UIViewController {
 	
 	@IBAction func saveButtonTapped(_ sender: Any) {
 		guard let set = set else { return }
-		dismiss(animated: true) {
-			SetController.shared.updateSet(set: set, name: nil, songs: self.orderedSongs)
-		}
+		SetController.shared.updateSet(set: set, name: nil, songs: self.orderedSongs)
+		performSegue(withIdentifier: "UnwindToSetListMasterVC", sender: self)
 	}
 	
 	// MARK: - Helpers

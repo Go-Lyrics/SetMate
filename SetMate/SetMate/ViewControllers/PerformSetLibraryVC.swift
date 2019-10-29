@@ -28,7 +28,9 @@ class PerformSetLibraryVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		fetchedSetResults = fetchedResultsController.fetchSetResults()
+		fetchedResultsController.fetchSetResults { (sets) in
+			self.fetchedSetResults = sets
+		}
 		prepareDelegate()
 	}
 	

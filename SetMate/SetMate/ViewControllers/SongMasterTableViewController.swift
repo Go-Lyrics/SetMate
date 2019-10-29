@@ -52,7 +52,7 @@ class SongMasterTableViewController: UITableViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		self.tableView.selectRow()
+		self.tableView.selectRow(at: tableView.indexPathForSelectedRow)
 	}
 
     // MARK: - Navigation

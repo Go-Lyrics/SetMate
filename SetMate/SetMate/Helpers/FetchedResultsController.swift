@@ -22,7 +22,7 @@ class FetchedResultsController: NSObject {
 		self.tableView = tableView
 	}
 	
-	func fetchSetResults() -> NSFetchedResultsController<Set> {
+	func fetchSetResults(completion: @escaping (NSFetchedResultsController<Set>) -> Void) {
 		let fetchRequest: NSFetchRequest<Set> = Set.fetchRequest()
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastModified", ascending: false)]
 		
@@ -33,11 +33,10 @@ class FetchedResultsController: NSObject {
 		
 		do {
 			try frc.performFetch()
+			completion(frc)
 		} catch {
 			fatalError("Error performing fetch for frc: \(error)")
 		}
-		
-		return frc
 	}
 	
 	func fetchSongResults(sortedBy sortingType: SongSortingType?, excluding songs: [Song]?) -> NSFetchedResultsController<Song> {

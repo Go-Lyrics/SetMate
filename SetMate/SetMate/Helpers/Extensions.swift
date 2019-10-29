@@ -16,7 +16,8 @@ extension String {
 }
 
 extension UITableView {
-	func selectRow(at indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
+	func selectRow(at indexPath: IndexPath?) {
+		let indexPath = indexPath ?? IndexPath(row: 0, section: 0)
 		guard self.cellForRow(at: indexPath) != nil else { return }
 		
 		self.selectRow(at: indexPath, animated: true, scrollPosition: .middle)

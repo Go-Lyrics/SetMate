@@ -38,17 +38,18 @@ class SetListMasterVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		fetchedSetResults = fetchedResultsController.fetchSetResults()
+		fetchedResultsController.fetchSetResults { (sets) in
+			self.fetchedSetResults = sets
+			self.tableView.selectRow(at: self.tableView.indexPathForSelectedRow)
+		}
 		prepareDelegate()
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		self.tableView.selectRow()
-	}
-	
 	// MARK: - IBActions
+	
+	@IBAction func unwindToSetListMasterVC(_ unwindSegue: UIStoryboardSegue) {
+		self.tableView.selectRow(at: tableView.indexPathForSelectedRow)
+	}
 	
 	@IBAction func newSetButtonTapped(_ sender: Any) {
 		let alert = UIAlertController(title: "New Set", message: nil, preferredStyle: .alert)

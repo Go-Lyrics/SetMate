@@ -270,6 +270,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qp-z8-iGc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GnZ-hV-4Xc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1171" y="-445"/>
         </scene>
@@ -482,6 +483,7 @@
                         <outlet property="draftTableView" destination="APb-Wg-mih" id="AFG-4u-a2C"/>
                         <outlet property="orderedTableView" destination="72r-e9-7RG" id="TJN-gL-Csp"/>
                         <outlet property="transferSongsButton" destination="zyv-la-j5J" id="16L-cp-AmH"/>
+                        <segue destination="GnZ-hV-4Xc" kind="unwind" identifier="UnwindToSetListMasterVC" unwindAction="unwindToSetListMasterVC:" id="7zr-MG-XGA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzM-0I-TiX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
