@@ -15,6 +15,15 @@ extension String {
 	}
 }
 
+extension UITableView {
+	func selectRow(at indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
+		guard self.cellForRow(at: indexPath) != nil else { return }
+		
+		self.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+		self.delegate?.tableView?(self, didSelectRowAt: indexPath)
+	}
+}
+
 extension NSString {
 	@objc var firstChar: String? {
 		return self.substring(to: 1)

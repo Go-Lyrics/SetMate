@@ -42,6 +42,12 @@ class SetListMasterVC: UITableViewController {
 		prepareDelegate()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		self.tableView.selectRow()
+	}
+	
 	// MARK: - IBActions
 	
 	@IBAction func newSetButtonTapped(_ sender: Any) {
@@ -67,11 +73,6 @@ class SetListMasterVC: UITableViewController {
 		let splitViewController = self.splitViewController
 		let detailsVC = (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController as? SetListDetailsVC
 		delegate = detailsVC
-	}
-	
-	private func selectRow(at indexPath: IndexPath) {
-		tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
-		tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
 	}
 	
 	// MARK: - Table view data source
