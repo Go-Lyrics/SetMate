@@ -10,7 +10,7 @@ SetMate was developed for performing musicians. The app was inspired by Marlon's
 
 ### Developers
 * Marlon Raskin     [GitHub Profile](https://github.com/marlonjames71)
-* Jeffrey Santana   [GitHub Profile]()
+* Jeffrey Santana   [GitHub Profile](https://github.com/Santana-Says)
 
 <img src="AddScreen.png" width="400"> <img src="SongDetail.png" width="400">
 <img src="PopOver.png" width="400"> <img src="FileUploadScreen.png" width="400">
