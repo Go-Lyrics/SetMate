@@ -6,7 +6,7 @@ SetMate was developed for performing musicians. The app was inspired by Marlon's
 - CoreData
 - PDFKit
 - Swift
-- FileManager
+- MobileCoreServices
 
 ### Developers
 * Marlon Raskin     [GitHub Profile](https://github.com/marlonjames71)
